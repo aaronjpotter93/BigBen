@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1"> 
+        <title>OurBudgetApp</title>
+
+        <link rel="stylesheet" href="style.css">
+        <script src="script1.js"></script>
+        
+    </head>
+    <body>
+        <h1>August 2021</h1>
+        <table border="5" cellpadding="10" cellspacing="2" contenteditable="true" id="myTable">
+            <tr>
+                <th>Income</th>
+                <th>Planned</th>
+                <th>Received</th>
+            </tr>
+            <tr>
+                <td>Utah Independent Mortgage</td>
+                <td>$0.00</td>
+                <td>$0.00</td>
+            </tr>
+
+        </table>
+
+        <button type="button" onclick="addRowToIncomeTable()">Add Income</button>
+        <br>
+        <br>
+        <br>
+
+        <table border="5" cellpadding="10" cellspacing="2" contenteditable="true" id="myTable2">
+            <tr>
+                <th>Transportation</th>
+                <th>Planned</th>
+                <th>Received</th>
+            </tr>
+            <tr>
+                <td>Gas</td>
+                <td>$0.00</td>
+                <td>$0.00</td>
+            </tr>
+
+        </table>
+
+        <button type="button" onclick="addRowToTable('myTable2')">Add Item</button>
+        <div id="newCategories">
+
+        </div>
+        <br>
+        <br>
+        <button type="button" onclick="addTable()">+ ADD GROUP</button>
+
+        
+
+    </body>
+</html>
