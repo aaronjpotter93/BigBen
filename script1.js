@@ -70,4 +70,26 @@ function addTable() {
 
     myDiv.appendChild(button);
     tableNum++;
+
 }
+
+window.onload = function() {
+    var x = document.getElementById("firstCell").innerText;
+    console.log(x);
+    var budgetTotal = document.createElement('h2');
+    budgetTotal.innerHTML = x;
+    var headerDiv = document.getElementById("header");
+    headerDiv.appendChild(budgetTotal);
+    
+    var myTable = document.getElementById("myTable");
+
+    myTable.addEventListener("input", function() {
+        console.log("contenteditable element changed");
+        var y = document.getElementById(this);
+        console.log(y)
+        budgetTotal.innerHTML = y;
+        console.log(y)
+    });
+}
+
+
