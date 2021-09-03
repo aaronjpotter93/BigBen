@@ -124,7 +124,28 @@ function addTableEventListener(table) {
         incomeTotals(table);
 
         var h2 = document.getElementsByTagName('h2')[0];
-        h2.innerHTML = '$' + calculateNetBudget().toFixed(2);
+        var span = document.getElementsByTagName('span')[0];
+        var span2 = document.getElementsByTagName('span')[1];
+
+        var netBudget = calculateNetBudget().toFixed(2);
+        span.innerHTML = '$' + netBudget;
+
+            if (netBudget > 0) {
+                span.style.color = "black";
+                span2.innerHTML = " left to budget";
+                span2.style.color = "gray";
+            }
+            else if (netBudget == 0) {
+                span.innerHTML = "It's a zero-based budget!";
+                span2.innerHTML = "";
+                span.style.color = "green";
+            }
+            else {
+                span.innerHTML = '$' + Math.abs(netBudget).toFixed(2);
+                span.style.color = "red";
+                span2.innerHTML = " over budget";
+                span2.style.color = "gray";
+            }
 
         console.log("Did Something");
     });
@@ -144,7 +165,9 @@ window.onload = function() {
     
     var span = document.createElement('span');
     span.innerHTML = x;
+    var span2 = document.createElement('span');
     budgetTotal.appendChild(span);
+    budgetTotal.appendChild(span2);
     var headerDiv = document.getElementById("header");
     headerDiv.appendChild(budgetTotal);
 
@@ -158,9 +181,30 @@ window.onload = function() {
             incomeTotals(e.target);
             
             var h2 = document.getElementsByTagName('h2')[0];
-            h2.innerHTML = '$' + calculateNetBudget().toFixed(2);
+
+            var netBudget = calculateNetBudget().toFixed(2);
+            span.innerHTML = '$' + netBudget;
+
+            if (netBudget > 0) {
+                span.style.color = "black";
+                span2.innerHTML = " left to budget";
+                span2.style.color = "gray";
+            }
+            else if (netBudget == 0) {
+                span.innerHTML = "It's a zero-based budget!";
+                span2.innerHTML = "";
+                span.style.color = "green";
+            }
+            else {
+                span.innerHTML = '$' + Math.abs(netBudget).toFixed(2);
+                span.style.color = "red";
+                span2.innerHTML = " over budget";
+                span2.style.color = "gray";
+            }
 
             console.log("Did Something");
+
+            
         });
     }
     
