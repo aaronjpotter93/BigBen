@@ -141,7 +141,10 @@ window.onload = function() {
     var x = document.getElementById("firstCell").innerText;
     console.log(x);
     var budgetTotal = document.createElement('h2');
-    budgetTotal.innerHTML = x;
+    
+    var span = document.createElement('span');
+    span.innerHTML = x;
+    budgetTotal.appendChild(span);
     var headerDiv = document.getElementById("header");
     headerDiv.appendChild(budgetTotal);
 
