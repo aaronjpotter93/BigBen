@@ -5,5 +5,31 @@
     border-color: black; */
 }
 
+table {
+    width: 55%;
+}
 
+.label {
+    width: 50%;
+}
+
+.plannedHeader {
+    width: 20%;
+}
+
+.actualHeader {
+    width: 20%;
+}
+
+/* .planned {
+    width: 20%;
+    text-align: center;
+    padding-right: 46px;
+}
+
+.actual {
+    width: 20%;
+    text-align: center;
+    padding-right: 46px; 
+} */
 

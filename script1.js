@@ -20,6 +20,8 @@ function addRowToIncomeTable() {
     cell1.innerHTML = "Paycheck 1";
     cell2.innerHTML = "$0.00";
     cell3.innerHTML = "$0.00";
+    cell2.style = "text-align: end; padding-right: 46px;";
+    cell3.style = "text-align: end; padding-right: 46px;";
 }
 
 
@@ -36,6 +38,8 @@ function addRowToTable(tableName) {
     cell1.innerHTML = "Label";
     cell2.innerHTML = "$0.00";
     cell3.innerHTML = "$0.00";
+    cell2.style = "text-align: end; padding-right: 46px;";
+    cell3.style = "text-align: end; padding-right: 50px;";
 
     numberOfRowsInEachTable[tableNumber-1] += 1;
 }
@@ -60,10 +64,17 @@ function addTable() {
     var cell3 = row.insertCell(2);
     cell1.innerHTML = "Untitled";
     cell1.style.fontWeight = 'bold';
+    cell1.setAttribute("class", "label");
+    cell1.style.textAlign = "center";
     cell2.innerHTML = "Planned";
     cell2.style.fontWeight = 'bold';
-    cell3.innerHTML = "Remaining";
+    cell2.style.textAlign = 'center';
+    cell2.setAttribute("class", "plannedHeader");
+    cell3.innerHTML = "Actual";
     cell3.style.fontWeight = 'bold';
+    cell3.style.textAlign = 'center';
+    cell3.setAttribute("class", "actualHeader");
+
 
     var row2 = table.insertRow(1);
     var cell4 = row2.insertCell(0);
@@ -71,7 +82,9 @@ function addTable() {
     var cell6 = row2.insertCell(2);
     cell4.innerHTML = "Label";
     cell5.innerHTML = "$0.00";
+    cell5.style = "text-align: end; padding-right: 46px;";
     cell6.innerHTML = "$0.00";
+    cell6.style = "text-align: end; padding-right: 50px;";
 
     var totalRow = table.insertRow(2);
     var cell7 = totalRow.insertCell(0);
@@ -79,7 +92,9 @@ function addTable() {
     var cell9 = totalRow.insertCell(2);
     cell7.innerHTML = "Total";
     cell8.innerHTML = "$0.00";
+    cell8.style = "text-align: end; padding-right: 46px;";
     cell9.innerHTML = "$0.00";
+    cell9.style = "text-align: end; padding-right: 50px;";
 
     table.setAttribute("border", "5");
     table.setAttribute("cellpadding", "10");
@@ -144,7 +159,7 @@ function addTableEventListener(table) {
                 span.innerHTML = '$' + Math.abs(netBudget).toFixed(2);
                 span.style.color = "red";
                 span2.innerHTML = " over budget";
-                span2.style.color = "gray";
+                span2.style.scolor = "gray";
             }
 
         console.log("Did Something");
