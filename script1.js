@@ -50,6 +50,7 @@ function addTable() {
     if(tableNum == 3) {
         myDiv.appendChild(document.createElement('br'));
         myDiv.appendChild(document.createElement('br'));
+        myDiv.appendChild(document.createElement('br'));
     } else {
         myDiv.appendChild(document.createElement('br'));
         myDiv.appendChild(document.createElement('br'));
@@ -96,10 +97,11 @@ function addTable() {
     cell9.innerHTML = "$0.00";
     cell9.style = "text-align: end; padding-right: 50px;";
 
-    table.setAttribute("border", "5");
+    table.setAttribute("border", "4");
     table.setAttribute("cellpadding", "10");
     table.setAttribute("cellspacing", "2");
     table.setAttribute("contenteditable", "true");
+    table.style.width = '100%';
     var tableName = 'myTable' + tableNum;
     table.setAttribute("id", `${tableName}`);
     myDiv.appendChild(table);
@@ -164,6 +166,10 @@ function addTableEventListener(table) {
 
         console.log("Did Something");
     });
+}
+
+function connectYourBank() {
+    window.location.href = "plaidFrontEnd.html";
 }
 
 function calculateNetBudget() {

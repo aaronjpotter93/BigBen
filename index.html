@@ -6,14 +6,24 @@
         <title>OurBudgetApp</title>
 
         <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="script1.js"></script>
+        <script src="plaidFrontEnd.js"></script>
         
     </head>
     <body>
+        
+        <!-- <div class="content" style="border: 1px solid black;"> -->
         <div class="content">
+        <button id="bankButton" onclick="tokenFromServer()">Connect Your Bank</button>
+        <button id="transactionsButton" onclick="getTransactions()">Transactions</button>   
         <div id="header">
         <h1>September 2021</h1>
         </div>
+        <!-- <div class="budgetAndTransactions" style="border: 1px solid red; display: flex;"> -->
+        <div class="budgetAndTransactions" style="display: flex;">
+        <div id="newCategories">
         <table border="4" cellpadding="10" cellspacing="2" contenteditable="true" id="myTable1" class="table">
             <tr>
                 <th class="label">Income</th>
@@ -58,8 +68,12 @@
         </table>
 
         <button type="button" onclick="addRowToTable('myTable2')">Add Item</button>
-        <div id="newCategories">
+        
 
+        </div>
+        <div id="transactionsDiv">
+
+        </div>
         </div>
         <br>
         <br>

@@ -6,7 +6,7 @@
 }
 
 table {
-    width: 55%;
+    width: 100%;
 }
 
 .label {
@@ -21,6 +21,22 @@ table {
     width: 20%;
 }
 
+.budgetAndTransactions {
+    height: 100%;
+}
+
+#newCategories {
+    width: 55%;
+    height: 100%;
+}
+
+#transactionsDiv {
+    margin-left: 5%;
+    width: 40%;
+    height: 400px;
+    overflow: auto;
+}
+
 /* .planned {
     width: 20%;
     text-align: center;
@@ -32,4 +48,18 @@ table {
     text-align: center;
     padding-right: 46px; 
 } */
+
+#bankButton {
+    position:absolute;
+    top: 42px;
+    right: 195px;
+}
+
+#transactionsButton {
+    position: absolute;
+    top: 42px;
+    right: 35px;
+    width: 130px;
+}
+
 
