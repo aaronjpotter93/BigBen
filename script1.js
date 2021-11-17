@@ -168,8 +168,8 @@ function addTableEventListener(table) {
     });
 }
 
-function connectYourBank() {
-    window.location.href = "plaidFrontEnd.html";
+function transactionsButton() {
+    window.location.href = "transactionsPage.html";
 }
 
 function calculateNetBudget() {
