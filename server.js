@@ -31,6 +31,10 @@ app.use(cors(corsOptions));
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const ipfilter = require('express-ipfilter').IpFilter
+const ips = ['127.0.0.1', '52.21.26.131', '52.21.47.157', '52.41.247.19', '52.88.82.239']
+app.use(ipfilter(ips))
+
 const { Configuration, PlaidApi, PlaidEnvironments } = require('plaid');
 
 const configuration = new Configuration({
@@ -96,6 +100,8 @@ app.post(
           throw err;
         }
         console.log("Item is saved.")
+        console.log(accessToken);
+        console.log(itemID);
       });
             
     } catch (error) {
@@ -135,7 +141,7 @@ app.post('/api/get_transactions', async function(req, res) {
     });
 
     res.json(transactions);
-    console.log(transactions);
+    // console.log(transactions);
   
   } catch(err) {
   // handle error

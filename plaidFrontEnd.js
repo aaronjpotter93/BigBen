@@ -20,7 +20,7 @@ var tokenFromServer = async function() {
           // this callback as your users connect an Item to Plaid.
           console.log(Event);
           if (Event == "HANDOFF") {
-            getTransactions();
+            // getTransactions();
           }
         },
     });

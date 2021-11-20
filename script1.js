@@ -1,6 +1,8 @@
 var tableNum = 3;
 var numberOfRowsInEachTable = [1, 1];
 var categoryTotals = [];
+var categories = ['Transportation', 'Housing', 'Debt', 'Kids', 'Personal Care', 'Luna', 'Lifestyle']
+var subcategories = [];
 
 function sumArray(array) {
     var sum = 0;
@@ -129,6 +131,11 @@ function incomeTotals(table) {
         var plannedCellString = row.cells[1].innerHTML;
         var plannedCellValue = parseFloat(plannedCellString.slice(1));
         total += plannedCellValue;
+
+        // var subcategory = row.cells[0].innerHTML;
+        // console.log(subcategory);
+        // subcategories[i-1] = subcategory;
+        // console.log(subcategories);
     }
     
     var numberOfRowsInIncomeTable = numberOfRowsInEachTable[tableNumber-1];
@@ -168,8 +175,136 @@ function addTableEventListener(table) {
     });
 }
 
+function getCategory(category, i) {
+    var id = "dropdownMenuButton" + i;
+    var button = document.getElementById(id);
+    button.value = category;
+}
+
 function transactionsButton() {
-    window.location.href = "transactionsPage.html";
+    // window.location.href = "transactionsPage.html";
+
+    var table = document.createElement('table');
+    table.setAttribute('class', 'table');
+    var header = table.createTHead();
+    var row = header.insertRow(0);
+    var th1 = document.createElement('TH');
+    th1.setAttribute('scope', 'col');
+    th1.innerHTML = "Date";
+    row.appendChild(th1);
+    var th2 = document.createElement('TH');
+    th2.setAttribute('scope', 'col');
+    th2.innerHTML = "Description";
+    row.appendChild(th2);
+    var th3 = document.createElement('TH');
+    th3.setAttribute('scope', 'col');
+    th3.innerHTML = "Amount";
+    row.appendChild(th3);
+    var th4 = document.createElement('TH');
+    th4.setAttribute('scope', 'col');
+    th4.innerHTML = "Category";
+    row.appendChild(th4);
+
+    $.getJSON("transactions.json", function(json) {
+        // console.log(json); // this will show the info it in firebug console
+    
+        for (let i = 0; i < json.length; i++) {
+            // var tableBody = document.createElement('TBODY');
+            // table.appendChild(tableBody);
+
+            row = table.insertRow(i+1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = json[i]['date'];
+            cell2.innerHTML= json[i]['name']
+            cell3.innerHTML = json[i]['amount']
+
+            // create div 1
+            var div_1 = document.createElement('div');
+            div_1.className = "dropdown";
+            // create button
+            var btn = document.createElement('input');
+            btn.className = "btn btn-secondary dropdown-toggle"
+            btn.type = "button"; 
+            btn.id = "dropdownMenuButton" + i;
+            btn.setAttribute("data-bs-toggle", "dropdown");
+            btn.setAttribute("aria-haspopup", "true");
+            btn.setAttribute("aria-expanded", "false");
+            btn.value = "Category";
+            // create div 2
+            var div_2 = document.createElement('div');
+            div_2.className = "dropdown-menu";
+            div_2.setAttribute("aria-labelledby", btn.id);
+            // create anchor tag
+            var ul = document.createElement('ul');
+            ul.className = "dropdown-menu";
+            ul.setAttribute("aria-labelledby", btn.id);
+            var li1 = document.createElement('li');
+            li1.className = "dropdown-item";
+            li1.innerHTML = "Fast Food"
+            li1.setAttribute("onclick", `getCategory('${li1.innerHTML}', '${i}')`);
+            ul.appendChild(li1);
+            var li2 = document.createElement('li');
+            li2.className = "dropdown-item";
+            li2.innerHTML = "Groceries";
+            li2.setAttribute("onclick", `getCategory('${li2.innerHTML}', '${i}')`);
+            ul.appendChild(li2);
+            var li3 = document.createElement('li');
+            li3.className = "dropdown-item";
+            li3.innerHTML = "Utilities";
+            li3.setAttribute("onclick", `getCategory('${li3.innerHTML}', '${i}')`);
+            ul.appendChild(li3);
+            var li4 = document.createElement('li');
+            var divider = document.createElement('hr');
+            divider.className = "dropdown-divider";
+            li4.appendChild(divider);
+            ul.appendChild(li4);
+            var li5 = document.createElement('li');
+            li5.className = "dropdown-menu-start";
+            ul.appendChild(li5);
+            var a = document.createElement('a');
+            a.className = "dropdown-item dropdown-toggle";
+            a.setAttribute("data-bs-toggle", "dropdown");
+            a.innerHTML = "More Options";
+            li5.appendChild(a);
+            ul.appendChild(li5);
+            var ul2 = document.createElement('ul');
+            ul2.className = "dropdown-menu shadow";
+    
+            var li6 = document.createElement('li');
+            li6.className = "dropdown-item";
+            li6.innerHTML = "Transportation";
+            ul2.appendChild(li6);
+            a.appendChild(ul2);
+
+
+
+            // var a = document.createElement('a');
+            // a.className = "dropdown-item dropdown-toggle";
+            // a.setAttribute("data-bs-toggle", "dropdown");
+            // a.innerHTML = "left";
+            // var ul2 = document.createElement('ul');
+            // ul2.className = "dropdown-menu shadow";
+            // li5.appendChild(ul2);
+            // var li_next = document.createElement('li');
+            // li_next.className  = "dropdown-item";
+            // li_next.innerHTML = categories[0];
+            // ul2.appendChild(li_next);
+            
+            
+            div_1.appendChild(btn);
+            div_1.appendChild(ul);
+            cell4.appendChild(div_1);
+            
+            
+        }
+    });
+
+    var myDiv = document.getElementById('transactionsDiv');
+    myDiv.appendChild(table);
+
 }
 
 function calculateNetBudget() {
