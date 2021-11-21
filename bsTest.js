@@ -219,7 +219,7 @@ function transactionsButton() {
             cell2.innerHTML= json[i]['name']
             cell3.innerHTML = json[i]['amount']
 
-            // cell4.innerHTML = "HELLO";
+            // create category multi-level dropdown button
             var divOne = "div1" + i;
             cell4.innerHTML = `<div class="dropdown" id=${divOne}></div>`;
             var div1 = document.getElementById(`${divOne}`);
