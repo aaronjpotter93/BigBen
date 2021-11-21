@@ -209,8 +209,6 @@ function transactionsButton() {
         // console.log(json); // this will show the info it in firebug console
     
         for (let i = 0; i < json.length; i++) {
-            // var tableBody = document.createElement('TBODY');
-            // table.appendChild(tableBody);
 
             row = table.insertRow(i+1);
             var cell1 = row.insertCell(0);
@@ -224,18 +222,40 @@ function transactionsButton() {
             cell4.innerHTML += `<div class="dropdown" id="div1"></div>`;
             var div1 = document.getElementById("div1");
             div1.innerHTML = `<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown button
+            Category
         </button>`;
             div1.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="div2">`;
             var div2 = document.getElementById("div2");
-            div2.innerHTML = `<a class="dropdown-item" href="#">Action</a>`;
-            div2.innerHTML += `<div class="dropdown dropend" id="div3">`;
+            div2.innerHTML = `<a class="dropdown-item" href="#">Fast Food</a>`;
+            div2.innerHTML += `<a class="dropdown-item" href="#">Groceries</a>`;
+            div2.innerHTML += `<a class="dropdown-item" href="#">Utilities</a>`;
+            div2.innerHTML += `<div class="dropdown dropstart" id="div3">`;
             var div3 = document.getElementById("div3");
-            div3.innerHTML = `<a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layouts</a>`;
+            div3.innerHTML = `<a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom</a>`;
             div3.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdown-layouts" id="div4">`;
             var div4 = document.getElementById("div4");
-            div4.innerHTML = `<a class="dropdown-item" href="#">Basic</a>`;
-            
+            div4.innerHTML = `<a class="dropdown-item" href="#">Housing</a>`;
+            div4.innerHTML += `<a class="dropdown-item" href="#">Transportation</a>`;
+            div4.innerHTML += `<a class="dropdown-item" href="#">Kids</a>`;
+            div4.innerHTML += `<a class="dropdown-item" href="#">Luna</a>`;
+            div4.innerHTML += `<a class="dropdown-item" href="#">Debt</a>`;
+            div4.innerHTML += `<a class="dropdown-item" href="#">Health & Fitness</a>`;
+            div4.innerHTML += `<a class="dropdown-item" href="#">Personal Care</a>`;
+
+            /************* Optional 3rd Level Dropdown **************/
+            // div4.innerHTML += `<div class="dropdown-divider"></div>`;
+            // div4.innerHTML += `<div class="dropdown dropstart" id="div5">`;
+            // var div5 = document.getElementById("div5");
+            // div5.innerHTML = `<a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom</a>`;
+            // div5.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdown-layouts" id="div6">`;
+            // var div6 = document.getElementById("div6");
+            // div6.innerHTML = `<a class="dropdown-item" href="#">Fullscreen</a>`;
+            // div6.innerHTML += `<a class="dropdown-item" href="#">Empty</a>`;
+            // div6.innerHTML += `<div class="dropdown-divider"></div>`;
+            // div6.innerHTML += `<a class="dropdown-item" href="#">Magic</a>`;
+
+            // magic script that keeps dropdown from closing
+            // when clicking on the next level
             (function($bs) {
                 const CLASS_NAME = 'has-child-dropdown-show';
                 $bs.Dropdown.prototype.toggle = function(_orginal) {
