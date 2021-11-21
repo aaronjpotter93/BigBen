@@ -175,10 +175,23 @@ function addTableEventListener(table) {
     });
 }
 
-function getCategory(category, i) {
-    var id = "dropdownMenuButton" + i;
-    var button = document.getElementById(id);
-    button.value = category;
+function getCategory(category, buttonID) {
+    var button = document.getElementById(buttonID);
+    // alert(buttonID);
+    button.innerHTML = category;
+}
+
+function createMenuCategories(div, dropdownMenuButton, i) {
+    
+    for (let j = 0; j < categories.length; j++) {
+        var category = categories[j];
+        var categoryID = "category" + j + i;
+        div.innerHTML += `<a class="dropdown-item" href="#" id=${categoryID}>${category}</a>`;
+        var item = document.getElementById(`${categoryID}`);
+        item.setAttribute("onclick", `getCategory('${item.innerHTML}', '${dropdownMenuButton}')`);
+        // alert(dropdownMenuButton);
+    }
+    
 }
 
 function transactionsButton() {
@@ -233,9 +246,18 @@ function transactionsButton() {
             var divTwo = "div2" + i;
             div1.innerHTML += `<div class="dropdown-menu" aria-labelledby=${dropdownMenuButton} id=${divTwo}>`;
             var div2 = document.getElementById(`${divTwo}`);
-            div2.innerHTML = `<a class="dropdown-item" href="#">Fast Food</a>`;
-            div2.innerHTML += `<a class="dropdown-item" href="#">Groceries</a>`;
-            div2.innerHTML += `<a class="dropdown-item" href="#">Utilities</a>`;
+            var levelOneItemOne = "prediction1" + i;
+            div2.innerHTML = `<a class="dropdown-item" href="#" id=${levelOneItemOne}>Fast Food</a>`;
+            var prediction1 = document.getElementById(`${levelOneItemOne}`);
+            prediction1.setAttribute("onclick", `getCategory('${prediction1.innerHTML}', '${dropdownMenuButton}')`);
+            var levelOneItemTwo = "prediction2" + i;
+            div2.innerHTML += `<a class="dropdown-item" href="#" id=${levelOneItemTwo}>Groceries</a>`;
+            var prediction2 = document.getElementById(`${levelOneItemTwo}`);
+            prediction2.setAttribute("onclick", `getCategory('${prediction2.innerHTML}', '${dropdownMenuButton}')`);
+            var levelOneItemThree = "prediction3" + i;
+            div2.innerHTML += `<a class="dropdown-item" href="#" id=${levelOneItemThree}>Utilities</a>`;
+            var prediction3 = document.getElementById(`${levelOneItemThree}`);
+            prediction3.setAttribute("onclick", `getCategory('${prediction3.innerHTML}', '${dropdownMenuButton}')`);
             var divThree = "div3" + i;
             div2.innerHTML += `<div class="dropdown dropstart" id=${divThree}>`;
             var div3 = document.getElementById(`${divThree}`);
@@ -243,13 +265,14 @@ function transactionsButton() {
             var divFour = "div4" + i;
             div3.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdown-layouts" id=${divFour}>`;
             var div4 = document.getElementById(`${divFour}`);
-            div4.innerHTML = `<a class="dropdown-item" href="#">Housing</a>`;
-            div4.innerHTML += `<a class="dropdown-item" href="#">Transportation</a>`;
-            div4.innerHTML += `<a class="dropdown-item" href="#">Kids</a>`;
-            div4.innerHTML += `<a class="dropdown-item" href="#">Luna</a>`;
-            div4.innerHTML += `<a class="dropdown-item" href="#">Debt</a>`;
-            div4.innerHTML += `<a class="dropdown-item" href="#">Health & Fitness</a>`;
-            div4.innerHTML += `<a class="dropdown-item" href="#">Personal Care</a>`;
+            createMenuCategories(div4, dropdownMenuButton, i);
+            // div4.innerHTML = `<a class="dropdown-item" href="#">Housing</a>`;
+            // div4.innerHTML += `<a class="dropdown-item" href="#">Transportation</a>`;
+            // div4.innerHTML += `<a class="dropdown-item" href="#">Kids</a>`;
+            // div4.innerHTML += `<a class="dropdown-item" href="#">Luna</a>`;
+            // div4.innerHTML += `<a class="dropdown-item" href="#">Debt</a>`;
+            // div4.innerHTML += `<a class="dropdown-item" href="#">Health & Fitness</a>`;
+            // div4.innerHTML += `<a class="dropdown-item" href="#">Personal Care</a>`;
 
             /************* Optional 3rd Level Dropdown **************/
             // div4.innerHTML += `<div class="dropdown-divider"></div>`;
