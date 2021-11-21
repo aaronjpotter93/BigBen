@@ -219,21 +219,27 @@ function transactionsButton() {
             cell2.innerHTML= json[i]['name']
             cell3.innerHTML = json[i]['amount']
 
-            cell4.innerHTML += `<div class="dropdown" id="div1"></div>`;
-            var div1 = document.getElementById("div1");
-            div1.innerHTML = `<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            // cell4.innerHTML = "HELLO";
+            var divOne = "div1" + i;
+            cell4.innerHTML = `<div class="dropdown" id=${divOne}></div>`;
+            var div1 = document.getElementById(`${divOne}`);
+            var dropdownMenuButton = "dropdownMenuButton" + i;
+            div1.innerHTML = `<button class="btn btn-secondary dropdown-toggle" type="button" id=${dropdownMenuButton} data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Category
         </button>`;
-            div1.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="div2">`;
-            var div2 = document.getElementById("div2");
+            var divTwo = "div2" + i;
+            div1.innerHTML += `<div class="dropdown-menu" aria-labelledby=${dropdownMenuButton} id=${divTwo}>`;
+            var div2 = document.getElementById(`${divTwo}`);
             div2.innerHTML = `<a class="dropdown-item" href="#">Fast Food</a>`;
             div2.innerHTML += `<a class="dropdown-item" href="#">Groceries</a>`;
             div2.innerHTML += `<a class="dropdown-item" href="#">Utilities</a>`;
-            div2.innerHTML += `<div class="dropdown dropstart" id="div3">`;
-            var div3 = document.getElementById("div3");
+            var divThree = "div3" + i;
+            div2.innerHTML += `<div class="dropdown dropstart" id=${divThree}>`;
+            var div3 = document.getElementById(`${divThree}`);
             div3.innerHTML = `<a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom</a>`;
-            div3.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdown-layouts" id="div4">`;
-            var div4 = document.getElementById("div4");
+            var divFour = "div4" + i;
+            div3.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdown-layouts" id=${divFour}>`;
+            var div4 = document.getElementById(`${divFour}`);
             div4.innerHTML = `<a class="dropdown-item" href="#">Housing</a>`;
             div4.innerHTML += `<a class="dropdown-item" href="#">Transportation</a>`;
             div4.innerHTML += `<a class="dropdown-item" href="#">Kids</a>`;
