@@ -221,77 +221,64 @@ function transactionsButton() {
             cell2.innerHTML= json[i]['name']
             cell3.innerHTML = json[i]['amount']
 
-            // create div 1
-            var div_1 = document.createElement('div');
-            div_1.className = "dropdown";
-            // create button
-            var btn = document.createElement('input');
-            btn.className = "btn btn-secondary dropdown-toggle"
-            btn.type = "button"; 
-            btn.id = "dropdownMenuButton" + i;
-            btn.setAttribute("data-bs-toggle", "dropdown");
-            btn.setAttribute("aria-haspopup", "true");
-            btn.setAttribute("aria-expanded", "false");
-            btn.value = "Category";
-            // create div 2
-            var div_2 = document.createElement('div');
-            div_2.className = "dropdown-menu";
-            div_2.setAttribute("aria-labelledby", btn.id);
-            // create a1
-            var a1 = document.createElement('a');
-            a1.className = "dropdown-item";
-            a1.setAttribute("href", "#");
-            a1.innerHTML = "Fast Food";
-            div_2.appendChild(a1);
-            // create div 3
-            var div3 = document.createElement('div');
-            div3.className = "dropdown dropstart";
-            div_2.appendChild(div3);
-            // create a2
-            var a2 = document.createElement('a');
-            a2.className = "dropdown-item dropdown-toggle";
-            a2.setAttribute("href", "#");
-            a2.id = "dropdown-layouts";
-            a2.setAttribute("data-bs-toggle", "dropdown");
-            a2.setAttribute("aria-haspopup", "true");
-            a2.setAttribute("aria-expanded", "false");
-            a2.innerHTML = "Groceries";
-            div3.appendChild(a2);
-
-            a2.addEventListener("click", function() {
-                // var div = document.createElement('div');
-                // div.className = "list-group";
-                // var a = document.createElement('a');
-                // a.className = "list-group-item list-group-item-action";
-                // a.setAttribute("href", "#");
-                // a.innerHTML = "Utilities";
-                // div.appendChild(a);
-                // document.body.appendChild(div);
-
-                var div = document.createElement('div');
-                div.className = "modal-dialog modal-dialog-scrollable";
-                var transactionsDiv = document.getElementById("transactionsDiv");
-                transactionsDiv.appendChild(div);
-                // alert("What up?")
-            });
+            cell4.innerHTML += `<div class="dropdown" id="div1"></div>`;
+            var div1 = document.getElementById("div1");
+            div1.innerHTML = `<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+        </button>`;
+            div1.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="div2">`;
+            var div2 = document.getElementById("div2");
+            div2.innerHTML = `<a class="dropdown-item" href="#">Action</a>`;
+            div2.innerHTML += `<div class="dropdown dropend" id="div3">`;
+            var div3 = document.getElementById("div3");
+            div3.innerHTML = `<a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layouts</a>`;
+            div3.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdown-layouts" id="div4">`;
+            var div4 = document.getElementById("div4");
+            div4.innerHTML = `<a class="dropdown-item" href="#">Basic</a>`;
             
-            // // create div 4
-            // var div4 = document.createElement('div');
-            // div4.className = "dropdown-menu";
-            // div4.setAttribute("aria-labelledby", "dropdown-layouts");
-            // div3.appendChild(div4);
-            // // create a3
-            // var a3 = document.createElement('a');
-            // a3.className = "dropdown-item";
-            // a3.setAttribute("href", "#");
-            // a3.innerHTML = "Basic";
-            // div4.appendChild(a3);
-
-            div_1.appendChild(btn);
-            div_1.appendChild(div_2);
-            cell4.appendChild(div_1);
+            (function($bs) {
+                const CLASS_NAME = 'has-child-dropdown-show';
+                $bs.Dropdown.prototype.toggle = function(_orginal) {
+                    return function() {
+                        document.querySelectorAll('.' + CLASS_NAME).forEach(function(e) {
+                            e.classList.remove(CLASS_NAME);
+                        });
+                        let dd = this._element.closest('.dropdown').parentNode.closest('.dropdown');
+                        for (; dd && dd !== document; dd = dd.parentNode.closest('.dropdown')) {
+                            dd.classList.add(CLASS_NAME);
+                        }
+                        return _orginal.call(this);
+                    }
+                }($bs.Dropdown.prototype.toggle);
             
+                document.querySelectorAll('.dropdown').forEach(function(dd) {
+                    dd.addEventListener('hide.bs.dropdown', function(e) {
+                        if (this.classList.contains(CLASS_NAME)) {
+                            this.classList.remove(CLASS_NAME);
+                            e.preventDefault();
+                        }
+                        e.stopPropagation(); // do not need pop in multi level mode
+                    });
+                });
             
+                // for hover
+                document.querySelectorAll('.dropdown-hover, .dropdown-hover-all .dropdown').forEach(function(dd) {
+                    dd.addEventListener('mouseenter', function(e) {
+                        let toggle = e.target.querySelector(':scope>[data-bs-toggle="dropdown"]');
+                        if (!toggle.classList.contains('show')) {
+                            $bs.Dropdown.getOrCreateInstance(toggle).toggle();
+                            dd.classList.add(CLASS_NAME);
+                            $bs.Dropdown.clearMenus();
+                        }
+                    });
+                    dd.addEventListener('mouseleave', function(e) {
+                        let toggle = e.target.querySelector(':scope>[data-bs-toggle="dropdown"]');
+                        if (toggle.classList.contains('show')) {
+                            $bs.Dropdown.getOrCreateInstance(toggle).toggle();
+                        }
+                    });
+                });
+            })(bootstrap);
         }
     });
 
