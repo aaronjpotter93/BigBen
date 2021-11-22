@@ -49,18 +49,8 @@ function addRowToTable(tableName) {
 function addTable() {
     var myDiv = document.getElementById("newCategories");
     
-    if(tableNum == 3) {
-        myDiv.appendChild(document.createElement('br'));
-        myDiv.appendChild(document.createElement('br'));
-        myDiv.appendChild(document.createElement('br'));
-    } else {
-        myDiv.appendChild(document.createElement('br'));
-        myDiv.appendChild(document.createElement('br'));
-        myDiv.appendChild(document.createElement('br'));
-    }
-    
-
     var table = document.createElement('table');
+    table.className = "table";
     var row = table.insertRow(0);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
@@ -118,6 +108,23 @@ function addTable() {
 
     numberOfRowsInEachTable.push(1);
     addTableEventListener(table);
+
+    var addTableButton = document.getElementById("addTableButton");
+    addTableButton.remove();
+    var addTableButton = document.createElement("button");
+    addTableButton.setAttribute("type", "button");
+    addTableButton.setAttribute("onclick", "addTable()");
+    addTableButton.setAttribute("id", "addTableButton");
+    addTableButton.innerHTML = "+ ADD GROUP";
+
+    myDiv.appendChild(document.createElement('br'));
+    myDiv.appendChild(document.createElement('br'));
+    myDiv.appendChild(document.createElement('br'));
+    myDiv.appendChild(addTableButton);
+
+    // innerHTML += broke all my table event listeners for some reason
+    // myDiv.innerHTML += `<br><br><br>`;
+    // myDiv.innerHTML += `<button type="button" onclick="addTable()" id="addTableButton">+ ADD GROUP</button>`;
 }
 
 function incomeTotals(table) {
@@ -240,7 +247,7 @@ function transactionsButton() {
             cell4.innerHTML = `<div class="dropdown" id=${divOne}></div>`;
             var div1 = document.getElementById(`${divOne}`);
             var dropdownMenuButton = "dropdownMenuButton" + i;
-            div1.innerHTML = `<button class="btn btn-secondary dropdown-toggle" type="button" id=${dropdownMenuButton} data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            div1.innerHTML = `<button class="btn btn-light dropdown-toggle" type="button" id=${dropdownMenuButton} data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Category
         </button>`;
             var divTwo = "div2" + i;
@@ -266,13 +273,6 @@ function transactionsButton() {
             div3.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdown-layouts" id=${divFour}>`;
             var div4 = document.getElementById(`${divFour}`);
             createMenuCategories(div4, dropdownMenuButton, i);
-            // div4.innerHTML = `<a class="dropdown-item" href="#">Housing</a>`;
-            // div4.innerHTML += `<a class="dropdown-item" href="#">Transportation</a>`;
-            // div4.innerHTML += `<a class="dropdown-item" href="#">Kids</a>`;
-            // div4.innerHTML += `<a class="dropdown-item" href="#">Luna</a>`;
-            // div4.innerHTML += `<a class="dropdown-item" href="#">Debt</a>`;
-            // div4.innerHTML += `<a class="dropdown-item" href="#">Health & Fitness</a>`;
-            // div4.innerHTML += `<a class="dropdown-item" href="#">Personal Care</a>`;
 
             /************* Optional 3rd Level Dropdown **************/
             // div4.innerHTML += `<div class="dropdown-divider"></div>`;
@@ -389,13 +389,18 @@ window.onload = function() {
                 span2.innerHTML = " over budget";
                 span2.style.color = "gray";
             }
-
+            
             console.log("Did Something");
 
-            
         });
     }
     
+    // var newCategoriesDiv = document.getElementById("newCategories");
+    // newCategoriesDiv.innerHTML += `<br>`;
+    // newCategoriesDiv.innerHTML += `<br>`;
+    // newCategoriesDiv.innerHTML += `<br>`;
+    // newCategoriesDiv.innerHTML += `<button type="button" onclick="addTable()" id="addTableButton">+ ADD GROUP</button>`;
+
 }
 
 
