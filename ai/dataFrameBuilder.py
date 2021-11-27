@@ -18,13 +18,22 @@ def buildDataFrame():
     with open("../transactions.json") as f:
         data = json.load(f)
 
+    new_list = []
+    for i in range(len(data)):
+        if data[i]['merchant_name'] != None:
+            print(data[i]['date'], data[i]['amount'], data[i]['name'])
+            new_list.append(data[i])
+
+    with open('../FilteredTransactions.json', 'w') as jsonfile:
+        json.dump(new_list, jsonfile)
+
     columns = {}
     labels = {"Uber": 1, "Touchstone": 2, "United Airlines": 3, "McDonald's": 4, "Starbucks": 5, "Sparkfun": 6, "Tectra Inc": 7, "Madison Bicycle Shop": 8, "KFC": 4}
     categories = []
     df = pd.DataFrame(columns=["Day", "Month", "Year", "Amount", "Merchant Name"])
     count = 0
-    for i in range(0, len(data)):
-        currentItem = data[i]
+    for i in range(0, len(new_list)):
+        currentItem = new_list[i]
     
         if not currentItem['merchant_name'].__eq__('None'):
             day, month, year = parseDate(currentItem['date'])
@@ -46,10 +55,10 @@ def buildDataFrame():
                 for key, value in columns.items():
                     if not key.__eq__(currentItem['merchant_name']):
                         value.append(0)
-            # categories.append(labels[currentItem['merchant_name']])
+            categories.append(labels[currentItem['merchant_name']])
 
     for column in columns:
         df[column] = columns[column]
-    # df['Categories'] = categories
+    df['Categories'] = categories
 
     return df

@@ -43,9 +43,8 @@ function postTransactionsToWindow(transactions) {
 var getTransactions = async function(request, response) {
   var transactions = (await $.post('http://localhost:1234/api/get_transactions'));
   console.log(transactions);
-  postTransactionsToWindow(transactions);
+  // postTransactionsToWindow(transactions);
 };
-
 
 
 

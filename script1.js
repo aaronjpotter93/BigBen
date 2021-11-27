@@ -1,8 +1,17 @@
 var tableNum = 3;
 var numberOfRowsInEachTable = [1, 1];
 var categoryTotals = [];
-var categories = ['Transportation', 'Housing', 'Debt', 'Kids', 'Personal Care', 'Luna', 'Lifestyle']
+var categories = ["Uber", "Touchstone", "United Airlines", "McDonald's", "Starbucks", "Sparkfun", "Tectra Inc", "Madison Bicycle Shop", "KFC"]
 var subcategories = [];
+
+var nn_predictions;
+
+fetch("ai/NeuralNetworkPredictions.json")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.Predictions)
+        nn_predictions = data.Predictions
+    })
 
 function sumArray(array) {
     var sum = 0;
@@ -229,7 +238,7 @@ function transactionsButton() {
 
     // read transactions from json file and
     // populate all rows in transactions table
-    $.getJSON("transactions.json", function(json) {
+    $.getJSON("FilteredTransactions.json", function(json) {
     
         for (let i = 0; i < json.length; i++) {
 
@@ -238,9 +247,12 @@ function transactionsButton() {
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             var cell4 = row.insertCell(3);
-            cell1.innerHTML = json[i]['date'];
-            cell2.innerHTML= json[i]['name']
-            cell3.innerHTML = json[i]['amount']
+
+            if (json[i]['merchant_name'] != null) {
+                cell1.innerHTML = json[i]['date'];
+                cell2.innerHTML= json[i]['merchant_name'];
+                cell3.innerHTML = json[i]['amount'];
+            }
 
             // create category multi-level dropdown button for cell4
             var divOne = "div1" + i;
@@ -255,14 +267,18 @@ function transactionsButton() {
             var div2 = document.getElementById(`${divTwo}`);
             var levelOneItemOne = "prediction1" + i;
             div2.innerHTML = `<a class="dropdown-item" href="#" id=${levelOneItemOne}>Fast Food</a>`;
+            var firstPrediction = document.getElementById(levelOneItemOne);
+            firstPrediction.innerHTML = categories[nn_predictions[i][0]];
             var prediction1 = document.getElementById(`${levelOneItemOne}`);
             prediction1.setAttribute("onclick", `getCategory('${prediction1.innerHTML}', '${dropdownMenuButton}')`);
             var levelOneItemTwo = "prediction2" + i;
-            div2.innerHTML += `<a class="dropdown-item" href="#" id=${levelOneItemTwo}>Groceries</a>`;
+            var secondPrediction = categories[nn_predictions[i][1]];
+            div2.innerHTML += `<a class="dropdown-item" href="#" id=${levelOneItemTwo}>${secondPrediction}</a>`;
             var prediction2 = document.getElementById(`${levelOneItemTwo}`);
             prediction2.setAttribute("onclick", `getCategory('${prediction2.innerHTML}', '${dropdownMenuButton}')`);
             var levelOneItemThree = "prediction3" + i;
-            div2.innerHTML += `<a class="dropdown-item" href="#" id=${levelOneItemThree}>Utilities</a>`;
+            var thirdPrediction = categories[nn_predictions[i][2]];
+            div2.innerHTML += `<a class="dropdown-item" href="#" id=${levelOneItemThree}>${thirdPrediction}</a>`;
             var prediction3 = document.getElementById(`${levelOneItemThree}`);
             prediction3.setAttribute("onclick", `getCategory('${prediction3.innerHTML}', '${dropdownMenuButton}')`);
             var divThree = "div3" + i;
@@ -346,6 +362,8 @@ function calculateNetBudget() {
     return income - expenses;
 }
 
+
+
 window.onload = function() {
     var x = document.getElementById("firstCell").innerText;
     console.log(x);
@@ -394,13 +412,6 @@ window.onload = function() {
 
         });
     }
-    
-    // var newCategoriesDiv = document.getElementById("newCategories");
-    // newCategoriesDiv.innerHTML += `<br>`;
-    // newCategoriesDiv.innerHTML += `<br>`;
-    // newCategoriesDiv.innerHTML += `<br>`;
-    // newCategoriesDiv.innerHTML += `<button type="button" onclick="addTable()" id="addTableButton">+ ADD GROUP</button>`;
-
 }
 
 

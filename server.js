@@ -141,7 +141,7 @@ app.post('/api/get_transactions', async function(req, res) {
     });
 
     res.json(transactions);
-    // console.log(transactions);
+    console.log(transactions);
   
   } catch(err) {
   // handle error
