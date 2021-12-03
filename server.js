@@ -31,9 +31,28 @@ app.use(cors(corsOptions));
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const ipfilter = require('express-ipfilter').IpFilter
-const ips = ['127.0.0.1', '52.21.26.131', '52.21.47.157', '52.41.247.19', '52.88.82.239']
-app.use(ipfilter(ips))
+// const ipfilter = require('express-ipfilter').IpFilter
+// const ips = ['127.0.0.1', '52.21.26.131', '52.21.47.157', '52.41.247.19', '52.88.82.239']
+// app.use(ipfilter(ips))
+
+var AccessControl = require('express-ip-access-control');
+
+var options = {
+	mode: 'deny',
+	denys: [],
+	allows: [],
+	forceConnectionAddress: false,
+	log: function(clientIp, access) {
+		console.log(clientIp + (access ? ' accessed.' : ' denied.'));
+	},
+
+	statusCode: 401,
+	redirectTo: '',
+	message: 'Unauthorized'
+};
+
+app.use(AccessControl(options));
+
 
 const { Configuration, PlaidApi, PlaidEnvironments } = require('plaid');
 
@@ -62,7 +81,7 @@ app.post('/api/create_link_token', async function(req, res) {
     products: ['transactions'],
     country_codes: ['US'],
     language: 'en',
-    webhook: 'http://localhost:1234/notifications',
+    webhook: 'http://localhost:3000/api/notifications',
     account_filters: {
         depository: {
             account_subtypes: ['checking', 'savings'],
@@ -111,9 +130,9 @@ app.post(
   },
 );
 
-app.listen(1234, function(err) {
+app.listen(3000, function(err) {
   if(err) console.log(err);
-  console.log("Server listening on PORT 1234");
+  console.log("Server listening on PORT 3000");
 });
 
 // Pull transactions for a date range
@@ -148,11 +167,10 @@ app.post('/api/get_transactions', async function(req, res) {
   }
 });
 
-app.post('/notifications', async function (req, res) {
+app.post('/api/notifications', async function (req, res) {
 try {
   const notificationRequestItems = req.body.notificationRequestItems;
-  res.status(200);
-  res.send();
+  res.status(200).send('OK');
   console.log("Notification request items below:");
   console.log(notificationRequestItems);
 } catch (error) {

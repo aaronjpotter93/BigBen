@@ -1,13 +1,13 @@
   
 var tokenFromServer = async function() {
-    var resultToken = (await $.post('http://localhost:1234/api/create_link_token')).link_token;
+    var resultToken = (await $.post('http://localhost:3000/api/create_link_token')).link_token;
     console.log(resultToken);
 
     const linkHandler = Plaid.create({
         token: resultToken,
         onSuccess: (public_token, metadata) => {
           // Send the public_token to your app server.
-          $.post('http://localhost:1234/api/exchange_public_token', {
+          $.post('http://localhost:3000/api/exchange_public_token', {
             public_token: public_token,
           });
         },

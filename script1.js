@@ -1,7 +1,7 @@
 var tableNum = 3;
 var numberOfRowsInEachTable = [1, 1];
 var categoryTotals = [];
-var categories = ["Uber", "Touchstone", "United Airlines", "McDonald's", "Starbucks", "Sparkfun", "Tectra Inc", "Madison Bicycle Shop", "KFC"]
+var categories = ["Ride Services", "Car Maintenance", "Brenna", "Fast Food", "Beverages", "Entertainment", "Utilities", "Hobbies", "Fast Food"]
 var subcategories = [];
 
 var nn_predictions;
@@ -59,7 +59,7 @@ function addTable() {
     var myDiv = document.getElementById("newCategories");
     
     var table = document.createElement('table');
-    table.className = "table";
+    table.className = "table table-info rounded";
     var row = table.insertRow(0);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
@@ -98,9 +98,9 @@ function addTable() {
     cell9.innerHTML = "$0.00";
     cell9.style = "text-align: end; padding-right: 50px;";
 
-    table.setAttribute("border", "4");
-    table.setAttribute("cellpadding", "10");
-    table.setAttribute("cellspacing", "2");
+    // table.setAttribute("border", "4");
+    // table.setAttribute("cellpadding", "10");
+    // table.setAttribute("cellspacing", "2");
     table.setAttribute("contenteditable", "true");
     table.style.width = '100%';
     var tableName = 'myTable' + tableNum;
@@ -109,6 +109,7 @@ function addTable() {
 
     var button = document.createElement('button');
     button.setAttribute("type", "button");
+    button.setAttribute("class", "btn btn-secondary btn-sm");
     button.setAttribute("onclick", `addRowToTable(\'${tableName}\')`);
     button.innerHTML = "Add Item";
 
@@ -122,6 +123,7 @@ function addTable() {
     addTableButton.remove();
     var addTableButton = document.createElement("button");
     addTableButton.setAttribute("type", "button");
+    addTableButton.setAttribute("class", "btn btn-secondary btn-sm");
     addTableButton.setAttribute("onclick", "addTable()");
     addTableButton.setAttribute("id", "addTableButton");
     addTableButton.innerHTML = "+ ADD GROUP";
@@ -210,13 +212,15 @@ function createMenuCategories(div, dropdownMenuButton, i) {
     
 }
 
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
 function transactionsButton() {
     // transactions table used to be on different html page  
     // window.location.href = "transactionsPage.html";
 
     // create transactions table
     var table = document.createElement('table');
-    table.setAttribute('class', 'table');
+    table.setAttribute('class', 'table table-info rounded');
     var header = table.createTHead();
     var row = header.insertRow(0);
     var th1 = document.createElement('TH');
@@ -238,7 +242,7 @@ function transactionsButton() {
 
     // read transactions from json file and
     // populate all rows in transactions table
-    $.getJSON("FilteredTransactions.json", function(json) {
+    $.getJSON("ai/newTransactions.json", function(json) {
     
         for (let i = 0; i < json.length; i++) {
 
@@ -248,11 +252,19 @@ function transactionsButton() {
             var cell3 = row.insertCell(2);
             var cell4 = row.insertCell(3);
 
-            if (json[i]['merchant_name'] != null) {
-                cell1.innerHTML = json[i]['date'];
-                cell2.innerHTML= json[i]['merchant_name'];
-                cell3.innerHTML = json[i]['amount'];
-            }
+            var month = json[i]['Month'] - 1
+            var date = months[month] + '-' + json[i]['Day']
+
+            cell1.innerHTML = date
+            cell2.innerHTML= json[i]['Merchant'];
+            cell3.innerHTML = json[i]['Amount'];
+
+            // if (json[i]['merchant_name'] != null) {
+                
+            //     // cell1.innerHTML = json[i];
+            //     // cell2.innerHTML= json[i];
+            //     // cell3.innerHTML = json[i];
+            // }
 
             // create category multi-level dropdown button for cell4
             var divOne = "div1" + i;
@@ -368,13 +380,14 @@ window.onload = function() {
     var x = document.getElementById("firstCell").innerText;
     console.log(x);
     var budgetTotal = document.createElement('h2');
+    budgetTotal.className = "display-6";
     
     var span = document.createElement('span');
     span.innerHTML = x;
     var span2 = document.createElement('span');
     budgetTotal.appendChild(span);
     budgetTotal.appendChild(span2);
-    var headerDiv = document.getElementById("header");
+    var headerDiv = document.getElementById("budgetTotal");
     headerDiv.appendChild(budgetTotal);
 
     // insert zero for first two tables
