@@ -15,7 +15,7 @@ def parseDate(date):
     return day, month, year
 
 # Opens transactions pulled from Plaid
-def buildDataFrame():
+def buildDataFrame(dataframe):
     with open("../newTransactions.json") as f:
         data = json.load(f)
 
@@ -37,34 +37,29 @@ def buildDataFrame():
     labels = {"Uber": 1, "Touchstone": 2, "United Airlines": 3, "McDonald's": 4, "Starbucks": 5, "Sparkfun": 6, "Tectra Inc": 7, "Madison Bicycle Shop": 8, "KFC": 4}
     
     categories = []
-    df = pd.DataFrame(columns=["Day", "Month", "Year", "Amount", "Merchant Name"])
-    count = 0
-    for i in range(0, len(filtered_list)):
+    df = pd.DataFrame(0, columns=dataframe.columns, index=dataframe.index)
+    df = df[df.index < len(filtered_list)]
+    df['Amount'] = df['Amount'].astype(float)
+    for i in range(len(filtered_list)):
         currentItem = filtered_list[i]
-    
-        if not currentItem['merchant_name'].__eq__('None'):
-            day, month, year = parseDate(currentItem['date'])
-            amount = currentItem['amount']
-            df.loc[i] = [day, month, year, amount, currentItem["merchant_name"]]
-            if currentItem['merchant_name'] not in columns:
-                columns[currentItem['merchant_name']]=[1]
-            
-                for i in range(count):
-                    columns[currentItem['merchant_name']].insert(0,0)
-                count += 1
-                
-                for key, value in columns.items():
-                    if not key.__eq__(currentItem['merchant_name']):
-                        value.append(0)
-            else:
-                columns[currentItem['merchant_name']].append(1)
-                count += 1
-                for key, value in columns.items():
-                    if not key.__eq__(currentItem['merchant_name']):
-                        value.append(0)
-            # categories.append(labels[currentItem['merchant_name']])
+        day, month, year = parseDate(currentItem['date'])
+        amount = currentItem['amount']
 
-    # Save dataframe as csv to add labels in excel
+        for col in df.columns:
+            if col == 'Day':
+                df['Day'].values[i] = day
+            elif col == 'Month':
+                df['Month'].values[i] = month 
+            elif col == 'Year':
+                df['Year'].values[i] = year
+            elif col == 'Amount':
+                df['Amount'].values[i] = amount
+            elif col.lower() == currentItem['merchant_name'].lower() or col.lower() == currentItem['name'].lower():
+                df[col].values[i] = 1
+            else:
+                df[col].values[i] = 0
+
+    # # Save dataframe as csv to add labels in excel
     df.to_csv('newFilteredTransactions.csv')
 
     # Read labels from excel file, convert to numbers
@@ -73,8 +68,8 @@ def buildDataFrame():
     for category in myDataSet['Categories']:
         categories.append(subcategories[category])
 
-    for column in columns:
-        df[column] = columns[column]
+    # for column in columns:
+    #     df[column] = columns[column]
     df['Categories'] = categories
 
     return df
