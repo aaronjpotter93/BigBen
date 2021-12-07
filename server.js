@@ -12,10 +12,10 @@ const fs = require('fs');
 
 var file = fs.readFileSync('items.json');
 var item = JSON.parse(file);
-var itemID = item['Item ID']
-var sandboxAccessToken = item['Acess Token']
+var itemID = item[1]['Item ID']
+var deseretFirstAccessToken = item[1]['Acess Token']
 console.log(itemID);
-console.log(sandboxAccessToken);
+console.log(deseretFirstAccessToken);
 
 // Using Express
 const express = require('express');
@@ -57,11 +57,11 @@ app.use(AccessControl(options));
 const { Configuration, PlaidApi, PlaidEnvironments } = require('plaid');
 
 const configuration = new Configuration({
-    basePath: PlaidEnvironments['sandbox'],
+    basePath: PlaidEnvironments['development'],
     baseOptions: {
       headers: {
         'PLAID-CLIENT-ID': '6144b210d9409600107b5f46',
-        'PLAID-SECRET': 'd2b61f7ccbdfdbe0b8b24737797b8f',
+        'PLAID-SECRET': '95f7393cbfd85793fa1a16c25ae223',
       },
     },
   });
@@ -81,7 +81,7 @@ app.post('/api/create_link_token', async function(req, res) {
     products: ['transactions'],
     country_codes: ['US'],
     language: 'en',
-    webhook: 'http://localhost:3000/api/notifications',
+    webhook: 'http://www.bradenwhalefinance.com.s3-website-us-west-1.amazonaws.com',
     account_filters: {
         depository: {
             account_subtypes: ['checking', 'savings'],
@@ -113,8 +113,10 @@ app.post(
       let accessToken = response.data.access_token;
       let itemID = response.data.item_id;
       let item = {"Item ID": itemID, "Acess Token": accessToken}
-      item = JSON.stringify(item)
-      fs.writeFile('items.json', item, (err) => {
+      var data = fs.readFileSync('items.json');
+      var json = JSON.parse(data);
+      json.push(item);
+      fs.writeFile('items.json', JSON.stringify(json), (err) => {
         if (err) {
           throw err;
         }
@@ -138,11 +140,11 @@ app.listen(3000, function(err) {
 // Pull transactions for a date range
 app.post('/api/get_transactions', async function(req, res) {
   var request = {
-    access_token: sandboxAccessToken,
-    start_date: '2018-06-28',
-    end_date: '2021-11-10',
+    access_token: deseretFirstAccessToken,
+    start_date: '2021-11-05',
+    end_date: '2021-12-05',
     options: {
-        count: 500,
+        count: 50,
         offset: 0,
     },
   };
@@ -151,16 +153,27 @@ app.post('/api/get_transactions', async function(req, res) {
     const transactions = response.data.transactions;
     const data = JSON.stringify(transactions);
     
-    // write JSON string to a file
-    fs.writeFile('transactions.json', data, (err) => {
-      if (err) {
-        throw err;
-      }
-      console.log("Transaction JSON data is saved.");
-    });
+    if (transactions.length <= 50) {
+      // write JSON string to a file
+      fs.writeFile('newTransactions.json', data, (err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("New Transactions JSON data is saved.");
+      });
+    }
+    else {
+      // write JSON string to a file
+      fs.writeFile('transactions.json', data, (err) => {
+        if (err) {
+          throw err;
+        }
+        console.log("Transaction JSON data is saved.");
+      });
+    }
 
     res.json(transactions);
-    console.log(transactions);
+    // console.log(transactions);
   
   } catch(err) {
   // handle error

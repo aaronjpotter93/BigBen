@@ -1,0 +1,308 @@
+,Day,Month,Year,Amount,Merchant Name
+0,9,9,2021,880.24,Home Mtg
+1,8,9,2021,3.43,Chevron
+2,7,9,2021,100.0,Kohl's
+3,7,9,2021,20.0,Anything For A Friend
+4,7,9,2021,17.93,Arby's
+5,7,9,2021,30.76,Crumbl
+6,7,9,2021,46.6,Walmart
+7,7,9,2021,72.47,Walmart
+8,4,9,2021,51.79,Amazon
+9,4,9,2021,19.61,CVS
+10,4,9,2021,109.03,The Home Depot
+11,4,9,2021,293.0,AT&T
+12,4,9,2021,63.77,Holiday Oil
+13,3,9,2021,22.76,Chick-fil-A
+14,3,9,2021,17.12,Sam's Club
+15,3,9,2021,124.07,Sam's Club
+16,2,9,2021,267.0,Towing & Storagspanish
+17,2,9,2021,16.51,Mesquite Mexican
+18,2,9,2021,38.67,Arby's
+19,1,9,2021,240.76,Mk Cosmetic
+20,1,9,2021,23.73,Little Caesar's
+21,1,9,2021,9.72,Wendy's
+22,31,8,2021,71.0,Chick-fil-A
+23,31,8,2021,4.29,Dollar Tree
+24,31,8,2021,22.0,Great Clips
+25,31,8,2021,153.36,Amazon
+26,31,8,2021,75.06,Target
+27,30,8,2021,61.32,7-Eleven
+28,30,8,2021,43.87,Chevron
+29,30,8,2021,25.19,Five Guys
+30,30,8,2021,4.28,Amazon Prime Video
+31,30,8,2021,12.64,Little Caesar's
+32,30,8,2021,30.5,City Corp
+33,28,8,2021,86.71,Five Guys
+34,27,8,2021,76.28,Mk Cnslt- Cassie Joh
+35,27,8,2021,37.0,Xmission
+36,27,8,2021,103.51,Walmart
+37,26,8,2021,58.1,Emi Health
+38,26,8,2021,30.0,Utah Infrastructure Ag
+39,26,8,2021,32.34,Amazon
+40,26,8,2021,28.95,Target
+41,24,8,2021,174.66,Progressive Insurance
+42,23,8,2021,33.51,Five Guys
+43,23,8,2021,0.99,Apple
+44,23,8,2021,47.59,Harmons
+45,21,8,2021,169.44,Smith's Food and Drug
+46,20,8,2021,3.43,Chevron
+47,18,8,2021,9.61,Chevron
+48,18,8,2021,12.01,Mk Pcp
+49,17,8,2021,100.0,Heritage
+50,17,8,2021,388.98,Thd Loan Svcs
+51,17,8,2021,0.99,Apple
+52,16,8,2021,6.52,Chevron
+53,16,8,2021,14.0,Udemy
+54,16,8,2021,11.74,Ikea
+55,16,8,2021,16.08,Amazon
+56,14,8,2021,12.11,Chick-fil-A
+57,14,8,2021,7.57,Little Caesar's
+58,14,8,2021,58.78,Maverik Convenience Store
+59,13,8,2021,6.52,Chevron
+60,13,8,2021,162.0,Kohl's
+61,13,8,2021,53.89,Ww Norton
+62,12,8,2021,3.43,Chevron
+63,12,8,2021,4.87,Chick-fil-A
+64,12,8,2021,326.27,Mk Cosmetic
+65,12,8,2021,3.21,Target
+66,12,8,2021,20.33,Wendy's
+67,11,8,2021,27.66,Northwestern Mu
+68,11,8,2021,9.35,Wendy's
+69,10,8,2021,24.13,Chipotle Mexican Grill
+70,9,8,2021,3.43,7-Eleven
+71,9,8,2021,15.31,Rancheritos Salt
+72,9,8,2021,10.61,Harmons
+73,6,8,2021,9.74,Chick-fil-A
+74,5,8,2021,58.5,Samsclub
+75,4,8,2021,3.09,Chevron
+76,4,8,2021,35.0,Utaheduc
+77,4,8,2021,35.0,Utaheduc
+78,4,8,2021,293.0,At&t
+79,3,8,2021,13.29,Amazon
+80,2,8,2021,37.35,Chevron
+81,2,8,2021,47.81,Chevron
+82,2,8,2021,85.23,Winco Foods
+83,28,7,2021,4.55,Shell
+84,26,7,2021,22.85,McDonald's
+85,26,7,2021,0.99,Apple
+86,26,7,2021,6.28,Winco Foods
+87,26,7,2021,47.66,Shell
+88,23,7,2021,38.82,Amazon
+89,22,7,2021,58.1,Emi Health
+90,22,7,2021,174.66,Progressive Insurance
+91,22,7,2021,19.17,Godaddy
+92,21,7,2021,8.94,Walmart
+93,21,7,2021,81.25,Walmart
+94,20,7,2021,61.53,Maverik Convenience Store
+95,19,7,2021,9.89,Five Guys
+96,19,7,2021,14.18,Walgreens
+97,17,7,2021,0.99,Apple
+98,17,7,2021,28.5,City Corp
+99,17,7,2021,30.0,Utah Infrastructure Ag
+100,16,7,2021,4.55,Chevron
+101,16,7,2021,37.0,Xmission
+102,16,7,2021,767.92,Tim Dahle Nissan
+103,16,7,2021,14.98,Winco Foods
+104,14,7,2021,3.06,Shell
+105,13,7,2021,27.66,Northwestern Mu
+106,12,7,2021,40.26,Little Caesar's
+107,12,7,2021,57.61,Amazon
+108,12,7,2021,63.24,Amazon
+109,10,7,2021,102.55,Samsclub
+110,9,7,2021,177.97,Jiffy Lube
+111,9,7,2021,2.13,Amazon Prime Video
+112,9,7,2021,37.5,Holiday Oil
+113,9,7,2021,56.05,Walmart
+114,7,7,2021,100.0,Heritage
+115,7,7,2021,388.98,Thd Loan Svcs
+116,6,7,2021,6.31,Amazon
+117,6,7,2021,6.7,Five Guys
+118,6,7,2021,123.0,Kohl's
+119,6,7,2021,1.82,Musicnotesi
+120,6,7,2021,4.28,Sheetmusdir
+121,6,7,2021,356.67,At&t
+122,6,7,2021,11.38,Harmons
+123,6,7,2021,52.43,Smith's Food and Drug
+124,6,7,2021,8.45,Walmart
+125,3,7,2021,113.58,Sam's Club
+126,1,7,2021,21.08,Little Caesar's
+127,1,7,2021,39.82,Amazon
+128,30,6,2021,42.95,Chevron
+129,30,6,2021,189.91,Mk Cosmetic
+130,30,6,2021,294.0,Varsity Tutors
+131,29,6,2021,25.7,Sam's Club
+132,29,6,2021,128.41,Walmart
+133,28,6,2021,51.67,Maverik Convenience Store
+134,28,6,2021,32.29,Wendy's
+135,26,6,2021,6.42,Amazon
+136,26,6,2021,48.55,Smith's Food and Drug
+137,25,6,2021,-22.08,Amazon
+138,25,6,2021,22.08,Amazon
+139,24,6,2021,100.95,Mk Cosmetic
+140,24,6,2021,22.08,Amazon
+141,24,6,2021,67.56,Amazon
+142,24,6,2021,102.47,Walmart
+143,23,6,2021,58.1,Emi Health
+144,22,6,2021,174.66,Progressive Insurance
+145,22,6,2021,12.01,Mk Pcp
+146,21,6,2021,28.64,Five Guys
+147,21,6,2021,3.21,Amazon Prime Video
+148,21,6,2021,7.03,Little Caesar's
+149,21,6,2021,67.9,Samsclub
+150,18,6,2021,0.99,Apple
+151,18,6,2021,7.03,Little Caesar's
+152,18,6,2021,15.78,In-N-Out Burger
+153,16,6,2021,19.0,Great Clips
+154,16,6,2021,13.25,Taco Bell
+155,15,6,2021,37.0,Xmission
+156,15,6,2021,28.5,City Corp
+157,15,6,2021,30.0,Utah Infrastructure Ag
+158,14,6,2021,43.47,Chevron
+159,14,6,2021,28.26,McDonald's
+160,14,6,2021,23.58,Petco
+161,14,6,2021,32.16,Amazon
+162,14,6,2021,85.76,Amazon
+163,14,6,2021,7.89,Arby's
+164,14,6,2021,3.53,Shell
+165,14,6,2021,13.9,Shell
+166,12,6,2021,78.4,Smoky Mountain Pizza & Eagle
+167,11,6,2021,27.66,Northwestern Mu
+168,11,6,2021,4.23,Chick-fil-A
+169,11,6,2021,15.52,Chick-fil-A
+170,11,6,2021,21.32,McDonald's
+171,10,6,2021,48.49,Shell
+172,9,6,2021,26.15,Tremonton
+173,9,6,2021,135.06,Target
+174,8,6,2021,100.0,Heritage
+175,8,6,2021,388.98,Thd Loan Svcs
+176,8,6,2021,82.0,Kohl's
+177,7,6,2021,23.49,Holiday Oil
+178,7,6,2021,7.03,Little Caesar's
+179,7,6,2021,17.38,Arby's
+180,7,6,2021,551.27,Oculus
+181,5,6,2021,227.48,At&t
+182,5,6,2021,75.22,Samsclub
+183,4,6,2021,19.68,Cafe Rio Mexican Grill
+184,4,6,2021,192.99,Walmart
+185,3,6,2021,10.0,Jimmy John's
+186,3,6,2021,7.03,Little Caesar's
+187,3,6,2021,17.38,Arby's
+188,2,6,2021,4.0,U.S. Post Office
+189,2,6,2021,13.35,In-N-Out Burger
+190,2,6,2021,11.1,Taco Bell
+191,2,6,2021,5.4,Wendy's
+192,2,6,2021,17.61,Wendy's
+193,1,6,2021,34.02,Chick-fil-A
+194,1,6,2021,205.78,The Home Depot
+195,1,6,2021,4.28,Amazon Prime Video
+196,1,6,2021,7.03,Little Caesar's
+197,1,6,2021,23.58,Amazon
+198,1,6,2021,22.36,Sonic
+199,1,6,2021,33.51,Wendy's
+200,29,5,2021,7.03,Little Caesar's
+201,28,5,2021,26.84,Five Guys
+202,27,5,2021,14.05,Little Caesar's
+203,27,5,2021,27.54,Arby's
+204,27,5,2021,1.07,Smith's Food and Drug
+205,27,5,2021,53.5,Smith's Food and Drug
+206,26,5,2021,410.74,Amazon
+207,25,5,2021,37.53,Amazon
+208,25,5,2021,45.84,Amazon
+209,24,5,2021,58.1,Emi Health
+210,24,5,2021,174.66,Progressive Insurance
+211,24,5,2021,144.43,Walmart
+212,22,5,2021,54.67,Chevron
+213,22,5,2021,8.1,Little Caesar's
+214,22,5,2021,10.37,Arby's
+215,22,5,2021,13.68,Taco Bell
+216,22,5,2021,10.38,Wendy's
+217,21,5,2021,7.03,Little Caesar's
+218,20,5,2021,27.72,Chick-fil-A
+219,19,5,2021,18.26,Arby's
+220,18,5,2021,37.0,Xmission
+221,18,5,2021,28.5,City Corp
+222,18,5,2021,30.0,Utah Infrastructure Ag
+223,17,5,2021,5.43,Steam Games
+224,17,5,2021,123.22,AT&T
+225,17,5,2021,0.99,Apple
+226,17,5,2021,40.72,Amazon
+227,17,5,2021,30.37,Wendy's
+228,15,5,2021,24.44,Cafe Rio Mexican Grill
+229,14,5,2021,4.82,Holiday Oil
+230,14,5,2021,34.04,Holiday Oil
+231,14,5,2021,33.5,All Pet Tville
+232,14,5,2021,43.8,Pie Pizzeria
+233,14,5,2021,30.22,Arby's
+234,14,5,2021,59.1,Target
+235,13,5,2021,14.99,Homeagain
+236,13,5,2021,39.59,Floral Salt
+237,12,5,2021,224.34,The Home Depot
+238,12,5,2021,16.33,Lowe's
+239,12,5,2021,32.82,Smith's Food and Drug
+240,11,5,2021,27.66,Northwestern Mu
+241,11,5,2021,39.99,All Pet Tville
+242,11,5,2021,34.08,Harmons
+243,10,5,2021,18.32,All Pet Tville
+244,5,5,2021,177.25,Sam's Club
+245,5,5,2021,39.68,Samsclub
+246,4,5,2021,100.0,Heritage
+247,4,5,2021,388.98,Thd Loan Svcs
+248,4,5,2021,21.26,Chipotle Mexican Grill
+249,4,5,2021,122.0,Kohl's
+250,4,5,2021,787.62,Clarity Vision
+251,4,5,2021,142.01,At&t
+252,3,5,2021,14.2,CVS
+253,3,5,2021,46.61,Holiday Oil
+254,3,5,2021,45.51,Five Guys
+255,3,5,2021,3.21,Amazon Prime Video
+256,3,5,2021,37.0,Xmission
+257,3,5,2021,49.09,Target
+258,3,5,2021,12.38,Taco Bell
+259,1,5,2021,50.94,Walmart
+260,30,4,2021,20.32,Wendy's
+261,29,4,2021,6.99,Musescore
+262,28,4,2021,33.62,Five Guys
+263,28,4,2021,41.29,Winco Foods
+264,28,4,2021,171.4,Sam's Club
+265,27,4,2021,27.36,Amazon
+266,26,4,2021,26.8,Chick-fil-A
+267,22,4,2021,58.1,Emi Health
+268,22,4,2021,25.96,Progressive Insurance
+269,22,4,2021,68.28,Chipot
+270,21,4,2021,81.72,Walmart
+271,20,4,2021,10.7,Amazon
+272,20,4,2021,52.31,Five Guys
+273,20,4,2021,3.11,Intermountain
+274,20,4,2021,30.0,Community Pharmacy
+275,20,4,2021,16.08,Amazon
+276,20,4,2021,19.22,Amazon
+277,19,4,2021,267.05,Apple
+278,19,4,2021,3.11,Intermountain
+279,19,4,2021,5.14,Intermountain
+280,19,4,2021,8.05,Intermountain
+281,17,4,2021,18.87,Chick-fil-A
+282,17,4,2021,20.38,Apple
+283,17,4,2021,5.36,Intermountain
+284,17,4,2021,0.99,Apple
+285,16,4,2021,40.83,CVS
+286,16,4,2021,51.47,CVS
+287,16,4,2021,46.86,Holiday Oil
+288,16,4,2021,125.81,Target
+289,15,4,2021,27.66,Northwestern Mu
+290,15,4,2021,25.28,Chipotle Mexican Grill
+291,14,4,2021,20.32,Five Guys
+292,14,4,2021,26.98,Grubhubchickfila
+293,14,4,2021,44.82,Amazon
+294,13,4,2021,388.98,Thd Loan Svcs
+295,13,4,2021,11.8,Chipotle Mexican Grill
+296,12,4,2021,100.0,Heritage
+297,12,4,2021,18.6,Chick-fil-A
+298,12,4,2021,23.27,Five Guys
+299,12,4,2021,190.0,Dahle's
+300,12,4,2021,28.5,City Corp
+301,12,4,2021,30.0,Utah Infrastructure Ag
+302,12,4,2021,18.63,Target
+303,12,4,2021,10.65,Taco Bell
+304,12,4,2021,68.55,Walmart
+305,10,4,2021,42.89,Amazon
+306,10,4,2021,63.59,Target

@@ -1,3 +1,15 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    /* background-image: url('flyingmoney.jpeg'); */
+    /* background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; */
+}
+
 .content {
     margin-left: 330px;
     height: 100%;
@@ -18,16 +30,14 @@
     border-color: blue;
 } */
 
-html {
+.budgetAndTransactions {
     height: 100%;
 }
 
-body {
-    height: 100%;
-    /* background-image: url('flyingmoney.jpeg'); */
-    /* background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover; */
+#newCategories {
+    width: 55%;
+    height: 87%;
+    overflow: auto;
 }
 
 table {
@@ -41,42 +51,12 @@ table {
     width: 50%;
 }
 
-/* .plannedHeader {
-    width: 20%;
-}
-
-.actualHeader {
-    width: 20%;
-} */
-
-.budgetAndTransactions {
-    height: 100%;
-}
-
-#newCategories {
-    width: 55%;
-    height: 87%;
-    overflow: auto;
-}
-
 #transactionsDiv {
     margin-left: 5%;
     width: 40%;
     height: 87%;
     overflow: auto;
 }
-
-/* .planned {
-    width: 20%;
-    text-align: center;
-    padding-right: 46px;
-}
-
-.actual {
-    width: 20%;
-    text-align: center;
-    padding-right: 46px; 
-} */
 
 #bankButton {
     position:absolute;
@@ -88,6 +68,13 @@ table {
     position: absolute;
     top: 14px;
     right: 35px;
+    width: 150px;
+}
+
+#getTransactionsButton {
+    position: absolute;
+    top: 70px;
+    right: 120px;
     width: 150px;
 }
   

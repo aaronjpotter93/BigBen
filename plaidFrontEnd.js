@@ -41,11 +41,11 @@ function postTransactionsToWindow(transactions) {
 };
 
 var getTransactions = async function(request, response) {
-  var transactions = (await $.post('http://localhost:1234/api/get_transactions'));
+  var transactions = (await $.post('http://localhost:3000/api/get_transactions'));
   console.log(transactions);
+  
   // postTransactionsToWindow(transactions);
 };
-
 
 
 

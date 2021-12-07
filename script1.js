@@ -1,8 +1,10 @@
 var tableNum = 3;
 var numberOfRowsInEachTable = [1, 1];
 var categoryTotals = [];
-var categories = ["Ride Services", "Car Maintenance", "Brenna", "Fast Food", "Beverages", "Entertainment", "Utilities", "Hobbies", "Fast Food"]
-var subcategories = [];
+var categories = ["Income", "Savings", "Housing", "Transportation", "Food", "Luna", "Lifestyle", "Health & Fitness", "Insurance", "Debt", "MISC"];
+var subcategories = {"Income": ['Paycheck', 'Side-Hustle', 'Child Tax Credit'], "Savings": ['Emergency Fund', 'Home Maintenance', 'Car Maintenance'], "Housing": ['Mortgage', 'Utilities', 'Internet', 'Home Repairs'], "Transportation": ['Gas', 'Car Repairs', 'Auto Insurance'], "Food": ['Groceries', 'Fast Food', 'Restaurants', 'Beverages'], "Luna": ['Pet Food & Supplies', 'Veterinary'], "Lifestyle": ['Cell Phones', 'Clothes', 'Subscriptions', 'Entertainment'], "Insurance": ['Life Insurance', 'Pet Insurance'], "Debt": ['Student Loans', 'Home Equity Loan', 'Home Depot Project Loan', 'Cassie Capital One', 'Braden Capital One', 'Deseret First Credit', 'Khols Credit'], "MISC": ['MISC'], "Health & Fitness": ['Doctor', 'Pharmacy', 'Dental & Vision Insurance', 'Dentist', 'Eyecare']};
+
+var predictionDictionary = {1: 'Mortgage', 2: 'Utilities', 3: 'Internet', 4: 'Home Repairs', 5: 'Gas', 6: 'Car Repairs', 7: 'Auto Insurance', 8: 'Groceries', 9: 'Fast Food', 10: 'Restaurants', 11: 'Beverages', 12: 'Pet Food & Supplies', 13: 'Veterinary', 14: 'Cell Phones', 15: 'Clothes', 16: 'Subscriptions', 17: 'Entertainment', 18: 'Life Insurance', 19: 'Pet Insurance', 20: 'Student Loans', 21: 'Home Equity Loan', 22: 'Home Depot Project Loan', 23: 'Cassie Capital One', 24: 'Braden Capital One', 25: 'Deseret First Credit', 26: 'Khols Credit', 27: 'MISC', 28: 'Pharmacy', 29: 'Dental & Vision Insurance', 30: 'Eyecare', 31: 'Doctor'}
 
 var nn_predictions;
 
@@ -195,8 +197,34 @@ function addTableEventListener(table) {
 
 function getCategory(category, buttonID) {
     var button = document.getElementById(buttonID);
-    // alert(buttonID);
     button.innerHTML = category;
+}
+
+function getSubcategory(category, buttonID) {
+    // var buttonString = buttonID.slice(0, -2);
+    // var index = 0
+    // var newButtonID = buttonString;
+    var button = document.getElementById(buttonID);
+    button.innerHTML = category;
+    
+}
+
+function stuff() {
+    alert(subcategories['Income'])
+}
+
+function createSubcategories(div, dropdownMenuButton, i, j, category) {
+    
+    if (subcategories[category] != null) {
+        for (let k = 0; k < subcategories[category].length; k++) {
+            var aID = 'subcategory' + i + j + k;
+            div.innerHTML += `<a class="dropdown-item" id=${aID} href="#">${subcategories[category][k]}</a>`;
+            var item = document.getElementById(`${aID}`);
+            item.setAttribute("onclick", `getSubcategory('${item.innerHTML}', '${dropdownMenuButton}')`);
+        }
+    }
+        
+    
 }
 
 function createMenuCategories(div, dropdownMenuButton, i) {
@@ -204,9 +232,28 @@ function createMenuCategories(div, dropdownMenuButton, i) {
     for (let j = 0; j < categories.length; j++) {
         var category = categories[j];
         var categoryID = "category" + j + i;
-        div.innerHTML += `<a class="dropdown-item" href="#" id=${categoryID}>${category}</a>`;
-        var item = document.getElementById(`${categoryID}`);
-        item.setAttribute("onclick", `getCategory('${item.innerHTML}', '${dropdownMenuButton}')`);
+        div.innerHTML += `<div class="dropdown dropstart" id=${categoryID}>`;
+        var div2 = document.getElementById(categoryID);
+        div2.innerHTML = `<a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${category}</a>`;
+        var divThree = "divy3" + i + j;
+        div2.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdown-layouts" id=${divThree}>`;
+        var div3 = document.getElementById(`${divThree}`);
+        
+        // var aID = i + j
+        // div3.innerHTML += `<a class="dropdown-item" id=${aID} href="#">${subcategories[category]}</a>`;
+        createSubcategories(div3, dropdownMenuButton, i, j, category);
+
+        // var item = document.getElementById(`${categoryID}`);
+        // item.setAttribute("onclick", `getCategory('${item.innerHTML}', '${dropdownMenuButton}')`);
+        
+        // var divThree = "div3" + i;
+        // div2.innerHTML += `<div class="dropdown dropstart" id=${divThree}>`;
+        // var div3 = document.getElementById(`${divThree}`);
+        // div3.innerHTML = `<a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom</a>`;
+        // var divFour = "div4" + i;
+        // div3.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdown-layouts" id=${divFour}>`;
+        // var div4 = document.getElementById(`${divFour}`);
+
         // alert(dropdownMenuButton);
     }
     
@@ -242,7 +289,7 @@ function transactionsButton() {
 
     // read transactions from json file and
     // populate all rows in transactions table
-    $.getJSON("ai/newTransactions.json", function(json) {
+    $.getJSON("newFilteredTransactions.json", function(json) {
     
         for (let i = 0; i < json.length; i++) {
 
@@ -256,40 +303,31 @@ function transactionsButton() {
             var date = months[month] + '-' + json[i]['Day']
 
             cell1.innerHTML = date
-            cell2.innerHTML= json[i]['Merchant'];
-            cell3.innerHTML = json[i]['Amount'];
-
-            // if (json[i]['merchant_name'] != null) {
-                
-            //     // cell1.innerHTML = json[i];
-            //     // cell2.innerHTML= json[i];
-            //     // cell3.innerHTML = json[i];
-            // }
+            cell2.innerHTML= json[i]['merchant_name'];
+            cell3.innerHTML = json[i]['amount'];
 
             // create category multi-level dropdown button for cell4
             var divOne = "div1" + i;
             cell4.innerHTML = `<div class="dropdown" id=${divOne}></div>`;
             var div1 = document.getElementById(`${divOne}`);
             var dropdownMenuButton = "dropdownMenuButton" + i;
-            div1.innerHTML = `<button class="btn btn-light dropdown-toggle" type="button" id=${dropdownMenuButton} data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Category
-        </button>`;
+            div1.innerHTML = `<button class="btn btn-light dropdown-toggle" type="button" id=${dropdownMenuButton} data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</button>`;
             var divTwo = "div2" + i;
             div1.innerHTML += `<div class="dropdown-menu" aria-labelledby=${dropdownMenuButton} id=${divTwo}>`;
             var div2 = document.getElementById(`${divTwo}`);
             var levelOneItemOne = "prediction1" + i;
             div2.innerHTML = `<a class="dropdown-item" href="#" id=${levelOneItemOne}>Fast Food</a>`;
             var firstPrediction = document.getElementById(levelOneItemOne);
-            firstPrediction.innerHTML = categories[nn_predictions[i][0]];
+            firstPrediction.innerHTML = predictionDictionary[nn_predictions[i][0]];
             var prediction1 = document.getElementById(`${levelOneItemOne}`);
             prediction1.setAttribute("onclick", `getCategory('${prediction1.innerHTML}', '${dropdownMenuButton}')`);
             var levelOneItemTwo = "prediction2" + i;
-            var secondPrediction = categories[nn_predictions[i][1]];
+            var secondPrediction = predictionDictionary[nn_predictions[i][1]];
             div2.innerHTML += `<a class="dropdown-item" href="#" id=${levelOneItemTwo}>${secondPrediction}</a>`;
             var prediction2 = document.getElementById(`${levelOneItemTwo}`);
             prediction2.setAttribute("onclick", `getCategory('${prediction2.innerHTML}', '${dropdownMenuButton}')`);
             var levelOneItemThree = "prediction3" + i;
-            var thirdPrediction = categories[nn_predictions[i][2]];
+            var thirdPrediction = predictionDictionary[nn_predictions[i][2]];
             div2.innerHTML += `<a class="dropdown-item" href="#" id=${levelOneItemThree}>${thirdPrediction}</a>`;
             var prediction3 = document.getElementById(`${levelOneItemThree}`);
             prediction3.setAttribute("onclick", `getCategory('${prediction3.innerHTML}', '${dropdownMenuButton}')`);
