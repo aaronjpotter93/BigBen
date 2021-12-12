@@ -387,6 +387,7 @@ window.onload = function() {
     console.log(x);
     var budgetTotal = document.createElement('h2');
     budgetTotal.className = "display-6";
+    // budgetTotal.style = "--bs-bg-opacity: .1;";
     
     var span = document.createElement('span');
     span.innerHTML = x;

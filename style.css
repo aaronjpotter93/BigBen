@@ -8,6 +8,7 @@ body {
     /* background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover; */
+    
 }
 
 .content {
@@ -16,6 +17,28 @@ body {
     /* border-style: dashed;
     border-width: thin;
     border-color: darkcyan; */
+}
+
+h2 {
+    width: 55%;
+}
+
+/* .display-6 {
+    background-color: rgba(255, 255, 255, 0.7);
+} */
+
+.logo {
+    position: absolute;
+    top: 15px;
+    right: 1550px;
+    width: 240px;
+    height: 142px;
+}
+
+#logoTitle {
+    position: absolute;
+    top: 155px;
+    left: 190px;
 }
 
 /* #header {
