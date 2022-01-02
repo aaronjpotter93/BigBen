@@ -16,87 +16,108 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script> -->
         
     </head>
-    <body class="">
+    <body>
         
-        <!-- <div class="content" style="border: 1px solid black;"> -->
-        <div class="content">
-            <img src="photos/whaleStockPhoto.jpg" class="logo" alt="Big Ben">
-            <p class="fs-5 fw-lighter" id="logoTitle">Big Ben</p>
-        <div class="container-lg" id="header">
-            <div class="row" id="topRow">
-                <div class="col" >
-                    <h1 class="display-1">December 2021</h1>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btn-secondary btn" id="bankButton" onclick="tokenFromServer()">Connect Your Bank</button>
-                    <button type="button" class="btn btn-secondary btn" id="transactionsButton" onclick="transactionsButton()">Transactions</button>
-                    <!-- <button type="button" class="btn btn-danger btn" id="getTransactionsButton" onclick="getTransactions()">Get Transactions</button> -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col" id="budgetTotal">
-
-                </div>
-            </div>
-            
-            
-        </div>
-        
-        <!-- <div class="budgetAndTransactions" style="border: 1px solid red; display: flex;"> -->
-        <div class="container budgetAndTransactions" style="display: flex;">
-            <div id="newCategories">
-                <table contenteditable="true" id="myTable1" class="table table-info rounded">
-                    <tr>
-                        <th scope="col" class="label">Income</th>
-                        <th scope="col" class="plannedHeader">Planned</th>
-                        <th scope="col" class="actualHeader">Received</th>
-                    </tr>
-                    <tr>
-                        <td class ="label">Utah Independent Mortgage</td>
-                        <td id="firstCell" class="planned">$0.00</td>
-                        <td class="actual">$0.00</td>
-                    </tr>
-                    <tr>
-                        <td id="incomeTotalRow" class="label">Total</td>
-                        <td class="planned">$0.00</td>
-                        <td class="actual">$0.00</td>
-                    </tr>
-                </table>
-        
-                <button type="button" class="btn btn-secondary btn-sm" onclick="addRowToIncomeTable()">Add Income</button>
-                <br>
-                <br>
-                <br>
-        
-                <table contenteditable="true" id="myTable2" class="table table-info rounded">
-                    <tr>
-                        <th class="label">Transportation</th>
-                        <th class="plannedHeader">Planned</th>
-                        <th class="actualHeader">Actual</th>
-                    </tr>
-                    <tr>
-                        <td class="label">Gas</td>
-                        <td class="planned">$0.00</td>
-                        <td class="actual">$0.00</td>
-                    </tr>
-                    <tr>
-                        <td id="firstExpenseTotalRow" class="label">Total</td>
-                        <td class="planned">$0.00</td>
-                        <td class="actual">$0.00</td>
-                    </tr>
-        
-                </table>
-        
-                <button type="button" class="btn btn-secondary btn-sm" onclick="addRowToTable('myTable2')">Add Item</button>
-                <br>
-                <br>
-                <br>
-                <button type="button" class="btn btn-secondary btn-sm" onclick="addTable()" id="addTableButton">+ ADD GROUP</button>
-            </div>
-            <div id="transactionsDiv">
-
+        <div class="row">
+            <div class="container" style="border: 1px solid rgb(237, 100, 230);">
+                <div class="row">
+                    <div class="col-2 content" style="border: 3px solid pink;">
+                        <div class="container">
+                            <div class="row">
+                                <img src="photos/whaleStockPhoto.jpg" class="logo" alt="Big Ben">
+                            </div>
+                            <div class="row">
+                                <p class="fs-5 fw-lighter" id="logoTitle">Big Ben</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="container-lg" id="header" style="border: 1px solid greenyellow;">
+                            <div class="row" id="topRow">
+                                <div class="col" style="border: 1px solid black;">
+                                    <h1 class="display-1" >December 2021</h1>
+                                </div>
+                                <div class="col" style="border: 1px solid black;">
+                                    <button type="button" class="btn btn-secondary btn" id="bankButton" onclick="tokenFromServer()">Connect Your Bank</button>
+                                    <button type="button" class="btn btn-secondary btn" id="transactionsButton" onclick="transactionsButton()">Transactions</button>
+                                    <!-- <button type="button" class="btn btn-danger btn" id="getTransactionsButton" onclick="getTransactions()">Get Transactions</button> -->
+                                </div>
+                            </div>
+                            <div class="row" style="border: 1px solid black;">
+                                <div class="col" id="budgetTotal">
+                
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>            
             </div>
         </div>
+        
+        <div class="row" style="border: 3px solid green;">
+            <!-- <div class="budgetAndTransactions" style="border: 1px solid red; display: flex;"> -->
+            <div class="container budgetAndTransactions">
+                <div class="row">
+                    <div class="col">
+                        <div id="newCategories" class="overflow-auto">
+                            <table id="myTable1" class="table table-info rounded">
+                                <tr>
+                                    <th scope="col" class="label">Income</th>
+                                    <th scope="col" class="plannedHeader">Planned</th>
+                                    <th scope="col" class="actualHeader">Received</th>
+                                </tr>
+                                <tr>
+                                    <td class ="label"><div id="labelData" class="row_data" edit_type="click" col_name="fname">Utah Independent Mortgage</div></td>
+                                    <td id="firstCell" class="planned"><div id="finData" class="row_data" edit_type="click" col_name="fname">$0.00</div></td>
+                                    <td class="actual">$0.00</td>
+                                </tr>
+                                <tr>
+                                    <td id="incomeTotalRow" class="label">Total</td>
+                                    <td class="planned">$0.00</td>
+                                    <td class="actual">$0.00</td>
+                                </tr>
+                            </table>
+                    
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="addRowToIncomeTable()">Add Income</button>
+                            <br>
+                            <br>
+                            <br>
+                    
+                            <table id="myTable2" class="table table-info rounded">
+                                <tr>
+                                    <th class="label"><div id="categoryName" class="row_data" edit_type="click" col_name="fname">Transportation</div></th>
+                                    <th class="plannedHeader">Planned</th>
+                                    <th class="actualHeader">Actual</th>
+                                </tr>
+                                <tr>
+                                    <td class="label"><div id="labelData" class="row_data" edit_type="click" col_name="fname">Gas</div></td>
+                                    <td class="planned"><div id="finData" class="row_data" edit_type="click" col_name="fname">$0.00</div></td>
+                                    <td class="actual">$0.00</td>
+                                </tr>
+                                <tr>
+                                    <td id="firstExpenseTotalRow" class="label">Total</td>
+                                    <td class="planned">$0.00</td>
+                                    <td class="actual">$0.00</td>
+                                </tr>
+                    
+                            </table>
+                    
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="addRowToTable('myTable2')">Add Item</button>
+                            <br>
+                            <br>
+                            <br>
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="addTable()" id="addTableButton">+ ADD GROUP</button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="transactionsDiv" class="overflow-auto">
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
         

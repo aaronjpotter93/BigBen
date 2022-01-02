@@ -1,5 +1,8 @@
 html {
     height: 100%;
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
 }
 
 body {
@@ -8,19 +11,21 @@ body {
     /* background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover; */
-    
+    border-style: solid;
+    border-width: thin;
+    border-color: red;
 }
 
 .content {
-    margin-left: 330px;
-    height: 100%;
-    /* border-style: dashed;
-    border-width: thin;
-    border-color: darkcyan; */
+    /* margin-left: 330px; */
+    /* height: 100%; */
+    border-style: solid;
+    border-width: thick;
+    border-color: black;
 }
 
 h2 {
-    width: 55%;
+    /* width: 55%; */
 }
 
 /* .display-6 {
@@ -28,17 +33,17 @@ h2 {
 } */
 
 .logo {
-    position: absolute;
+    /* position: absolute;
     top: 15px;
-    right: 1550px;
+    right: 1550px; */
     width: 240px;
     height: 142px;
 }
 
 #logoTitle {
     position: absolute;
-    top: 155px;
-    left: 190px;
+    /* top: 155px; */
+    left: 53px;
 }
 
 /* #header {
@@ -54,20 +59,27 @@ h2 {
 } */
 
 .budgetAndTransactions {
-    height: 100%;
+    /* height: 100%; */
+    border-style: solid;
+    border-width: 1px;
+    border-color: goldenrod;
+    height: 77vh;
 }
 
 #newCategories {
-    width: 55%;
-    height: 87%;
-    overflow: auto;
+    /* width: 55%; */
+    height: 77vh;
+    overflow-y: scroll;
+    border-style: solid;
+    border-width: thin;
+    border-color: blue;
 }
 
 table {
     width: 100%;
     /* border: solid black; */
     /* border-radius: 6px; */
-    overflow:hidden;
+    /* overflow:hidden; */
 }
 
 .label {
@@ -76,21 +88,23 @@ table {
 
 #transactionsDiv {
     margin-left: 5%;
-    width: 40%;
-    height: 87%;
+    height: 77vh;
     overflow: auto;
+    border-style: solid;
+    border-width: thin;
+    border-color: green;
 }
 
 #bankButton {
-    position:absolute;
+    /* position:absolute;
     top: 14px;
-    right: 215px;
+    right: 215px; */
 }
 
 #transactionsButton {
-    position: absolute;
+    /* position: absolute;
     top: 14px;
-    right: 35px;
+    right: 35px; */
     width: 150px;
 }
 
