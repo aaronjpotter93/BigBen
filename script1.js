@@ -34,26 +34,27 @@ function addRowToIncomeTable() {
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-    cell1.innerHTML += `<div id="labelData" class="row_data" edit_type="click" col_name="fname">Paycheck 1</div>`;
-    cell2.innerHTML = `<div id="finData" class="row_data" edit_type="click" col_name="fname">$0.00</div>`;
+    var rowNumber = numberOfRowsInEachTable[0];
+    cell1.innerHTML += `<div id="labelData" class="row_data" edit_type="click" col_name="fname" row=${rowNumber}>Paycheck 1</div>`;
+    cell2.innerHTML = `<div id="finData" class="row_data" edit_type="click" col_name="fname" row=${rowNumber}>$0.00</div>`;
     cell3.innerHTML = "$0.00";
 
-    cell1.children[0].addEventListener("focusout", function(e) {
+    // cell1.children[0].addEventListener("focusout", function(e) {
 
-        var newSubcategory = cell1.children[0].innerHTML;
+    //     var newSubcategory = cell1.children[0].innerHTML;
 
-        for (let i = 0; i < numberOfTransactions; i++) {
-            var divID = "Income" + "Menu" + i;
-            var dropdownMenuButtonID = 'dropdownMenuButton' + i;
-            var menuItemID = "Income" + newSubcategory + i;
-            var menuDiv = document.getElementById(divID);
-            menuDiv.innerHTML += `<a class="dropdown-item" id=${menuItemID} href="#" onclick="getSubcategory(${newSubcategory}, ${dropdownMenuButtonID})">${newSubcategory}</a>`;
+    //     for (let i = 0; i < numberOfTransactions; i++) {
+    //         var divID = "Income" + "Menu" + i;
+    //         var dropdownMenuButtonID = 'dropdownMenuButton' + i;
+    //         var menuItemID = "Income" + newSubcategory + i;
+    //         var menuDiv = document.getElementById(divID);
+    //         menuDiv.innerHTML += `<a class="dropdown-item" id=${menuItemID} href="#" onclick="getSubcategory(${newSubcategory}, ${dropdownMenuButtonID})">${newSubcategory}</a>`;
             
-        }
+    //     }
 
-        subcategories["Income"].push(newSubcategory);
+    //     subcategories["Income"].push(newSubcategory);
         
-    });
+    // });
     
     // alert(Object.values(subcategories));
 }
@@ -69,13 +70,15 @@ function addRowToTable(tableName) {
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-    cell1.innerHTML = `<div id="labelData" class="row_data" edit_type="click" col_name="fname">Label</div>`;
-    cell2.innerHTML = `<div id="finData" class="row_data" edit_type="click" col_name="fname">$0.00</div>`;
+    numberOfRowsInEachTable[tableNumber - 1] += 1;
+    var rowNumber = numberOfRowsInEachTable[tableNumber - 1];
+    cell1.innerHTML = `<div id="labelData" class="row_data" edit_type="click" col_name="fname" row=${rowNumber}>Label</div>`;
+    cell2.innerHTML = `<div id="finData" class="row_data" edit_type="click" col_name="fname" row=${rowNumber}>$0.00</div>`;
     cell3.innerHTML = "$0.00";
 
     // var category = table.children[0].rows[0].cells[0].children[0].innerHTML;
     // subcategories[category].push("Label");
-    numberOfRowsInEachTable[tableNumber - 1] += 1;
+    
     // subcategories[table.row[0].cells[0].innerHTML].push(cell1.innerHTML);
 }
 
@@ -99,13 +102,14 @@ function addTable() {
     cell3.setAttribute("class", "actualHeader");
 
     categories.push("Untitled");
+    // subcategories["Untitled"].push("Label");
 
     var row2 = table.insertRow(1);
     var cell4 = row2.insertCell(0);
     var cell5 = row2.insertCell(1);
     var cell6 = row2.insertCell(2);
-    cell4.innerHTML = `<div id="labelData" class="row_data" edit_type="click" col_name="fname">Label</div>`;
-    cell5.innerHTML = `<div id="finData" class="row_data" edit_type="click" col_name="fname">$0.00</div>`;
+    cell4.innerHTML = `<div id="labelData" class="row_data" edit_type="click" col_name="fname" row="1">Label</div>`;
+    cell5.innerHTML = `<div id="finData" class="row_data" edit_type="click" col_name="fname" row="1">$0.00</div>`;
     cell6.innerHTML = "$0.00";
 
     var totalRow = table.insertRow(2);
@@ -506,6 +510,7 @@ window.onload = function() {
             var category = event.target.innerHTML;
             categories[tableNumber - 1] = category;
             
+            // Adding categoryName to all dropdown menus
             for (let i = 0; i < numberOfTransactions; i++) {
                 var divID = "categoryMenu" + i;
                 var menuItemID = divID + "item" + (categories.length - 1);
@@ -513,6 +518,10 @@ window.onload = function() {
                 menuDiv.innerHTML += `<div class="dropdown dropstart" id=${menuItemID}></div>`;
                 var menuDivCategoryName = document.getElementById(menuItemID);
                 menuDivCategoryName.innerHTML += `<a class="dropdown-item dropdown-toggle show" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">${category}</a>`;
+            }
+
+            if (numberOfRowsInEachTable[tableNumber - 1] == 1) {
+                subcategories[category] = ["Label"];
             }
         }
         if (event.target.id == "labelData") {
@@ -528,12 +537,11 @@ window.onload = function() {
                 menuDiv.innerHTML += `<a class="dropdown-item" id=${menuItemID} href="#" onclick="getSubcategory(${newSubcategory}, ${dropdownMenuButtonID})">${newSubcategory}</a>`;
 
             }
-            if (subcategories[category] == null) {
-                subcategories[category] = [];
-            }
-            subcategories[category].push(newSubcategory);
-            // subcategories[category] = newSubcategory;
-            // alert(Object.values(subcategories))
+            
+            var rowNumber = event.target.getAttribute("row");
+            subcategories[category][rowNumber - 1] = newSubcategory;
+            // alert(subcategories[category]);
+            // alert(rowNumber)
         }
     });	
     //--->save single field data > end
