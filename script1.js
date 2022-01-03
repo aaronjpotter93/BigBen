@@ -520,9 +520,10 @@ window.onload = function() {
                 menuDivCategoryName.innerHTML += `<a class="dropdown-item dropdown-toggle show" href="#" id="dropdown-layouts" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">${category}</a>`;
             }
 
-            if (numberOfRowsInEachTable[tableNumber - 1] == 1) {
-                subcategories[category] = ["Label"];
-            }
+            // if (numberOfRowsInEachTable[tableNumber - 1] == 1) {
+            //     subcategories[category] = ["Label"];
+            // }
+
         }
         if (event.target.id == "labelData") {
             var newSubcategory = event.target.innerHTML;
