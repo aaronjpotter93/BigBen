@@ -172,7 +172,7 @@ function addTable() {
         menuDivCategoryName.innerHTML += `<div class="dropdown-menu" aria-labelledby="dropdown-layouts" id=${ID}></div>`;
         var lastDiv = document.getElementById(ID);
         var dropdownMenuButtonID = "dropdownMenuButton" + i;
-        var IDa = ID + "subcategory" + i;
+        var IDa = ID + "subcategory" + 0;
         lastDiv.innerHTML += `<a class="dropdown-item" id=${IDa} href="#" onclick="getSubcategory('Label', '${dropdownMenuButtonID}')">Label</a>`;
     }
 }
@@ -249,7 +249,7 @@ function createSubcategories(div, dropdownMenuButton, i, j, category) {
     
     if (subcategories[category] != null) {
         for (let k = 0; k < subcategories[category].length; k++) {
-            var aID = category + "Menu" + i + "subcategory" + i;
+            var aID = category + "Menu" + i + "subcategory" + k + "R";
             div.innerHTML += `<a class="dropdown-item" id=${aID} href="#">${subcategories[category][k]}</a>`;
             var item = document.getElementById(`${aID}`);
             item.setAttribute("onclick", `getSubcategory('${item.innerHTML}', '${dropdownMenuButton}')`);
@@ -532,20 +532,21 @@ window.onload = function() {
                 var categoryMenuItemID = "categoryMenuAtag" + i + "item" + (tableNumber - 1);
                 var categoryMenuItem = document.querySelector(`[categoryID="${categoryMenuItemID}"]`);
                 categoryMenuItem.innerHTML = category;
+                // edit categoryName ID's for all children
             }
         }
         if (event.target.id == "labelData") {
             var newSubcategory = event.target.innerHTML;
             let table = event.target.parentNode.parentNode.parentNode.parentNode;
             var category = table.rows[0].cells[0].children[0].innerHTML;
+            var rowNumber = event.target.getAttribute("row");
 
             for (let i = 0; i < numberOfTransactions; i++) {
-                var divID = category + "Menu" + i;
-                var dropdownMenuButtonID = 'dropdownMenuButton' + i;
-                var menuItemID = divID + "subcategory" + i;
-                var menuDiv = document.getElementById(menuItemID);
-                menuDiv.innerHTML = newSubcategory;
-                alert(menuDiv.innerHTML);
+                var dropdownMenuButtonID = "dropdownMenuButton" + i;
+                var aID =  category + "Menu" + i + "subcategory" + (rowNumber - 1);
+                var aTag = document.getElementById(aID);
+                aTag.innerHTML = newSubcategory;
+                aTag.setAttribute("onclick", `getSubcategory('${newSubcategory}', '${dropdownMenuButtonID}')`);
             }
             
             var rowNumber = event.target.getAttribute("row");
