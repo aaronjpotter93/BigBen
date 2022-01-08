@@ -76,10 +76,17 @@ function addRowToTable(tableName) {
     cell2.innerHTML = `<div id="finData" class="row_data" edit_type="click" col_name="fname" row=${rowNumber}>$0.00</div>`;
     cell3.innerHTML = "$0.00";
 
-    // var category = table.children[0].rows[0].cells[0].children[0].innerHTML;
-    // subcategories[category].push("Label");
+    var category = table.children[0].rows[0].cells[0].children[0].innerHTML;
+    subcategories[category].push("Label");
     
-    // subcategories[table.row[0].cells[0].innerHTML].push(cell1.innerHTML);
+    // Add subcategory to all dropdown menus
+    for (let i = 0; i < numberOfTransactions; i++) {
+        var divID = category + "Menu" + i;
+        var div = document.getElementById(divID);
+        var aID = category + "Menu" + i + "subcategory" + (rowNumber - 1);
+        var dropdownMenuButtonID = "dropdownMenuButton" + i;
+        div.innerHTML += `<a class="dropdown-item" id=${aID} href="#" onclick="getSubcategory('Label', '${dropdownMenuButtonID}')">Label</a>`;
+    }
 }
 
 function addTable() {
@@ -102,7 +109,7 @@ function addTable() {
     cell3.setAttribute("class", "actualHeader");
 
     categories.push("Untitled");
-    // subcategories["Untitled"].push("Label");
+    subcategories["Untitled"] = ["Label"];
 
     var row2 = table.insertRow(1);
     var cell4 = row2.insertCell(0);
@@ -249,7 +256,7 @@ function createSubcategories(div, dropdownMenuButton, i, j, category) {
     
     if (subcategories[category] != null) {
         for (let k = 0; k < subcategories[category].length; k++) {
-            var aID = category + "Menu" + i + "subcategory" + k + "R";
+            var aID = category + "Menu" + i + "subcategory" + k;
             div.innerHTML += `<a class="dropdown-item" id=${aID} href="#">${subcategories[category][k]}</a>`;
             var item = document.getElementById(`${aID}`);
             item.setAttribute("onclick", `getSubcategory('${item.innerHTML}', '${dropdownMenuButton}')`);
@@ -525,7 +532,13 @@ window.onload = function() {
             var tableNumberString = table.getAttribute("id");
             var tableNumber = tableNumberString.slice(-1);
             var category = event.target.innerHTML;
+
+            var oldCategoryName = categories[tableNumber - 1];
+
+            subcategories[category] = subcategories[oldCategoryName];
+            delete subcategories[oldCategoryName];
             categories[tableNumber - 1] = category;
+            
             
             // Edit categoryName in all dropdown menus
             for (let i = 0; i < numberOfTransactions; i++) {
@@ -533,7 +546,19 @@ window.onload = function() {
                 var categoryMenuItem = document.querySelector(`[categoryID="${categoryMenuItemID}"]`);
                 categoryMenuItem.innerHTML = category;
                 // edit categoryName ID's for all children
+                var divID = oldCategoryName + "Menu" + i;
+                var divTag = document.getElementById(divID);
+                var newDivId = category + "Menu" + i;
+                divTag.setAttribute("id", newDivId);
+
+                for (let j = 0; j < subcategories[category].length; j++) {
+                    var aID = oldCategoryName + "Menu" + i + "subcategory" + j;
+                    var aTag = document.getElementById(aID);
+                    var newaID = category + "Menu" + i + "subcategory" + j;
+                    aTag.setAttribute("id", newaID);
+                }
             }
+            
         }
         if (event.target.id == "labelData") {
             var newSubcategory = event.target.innerHTML;
