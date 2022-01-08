@@ -186,26 +186,28 @@ function addTable() {
 
 function incomeTotals(table) {
     total = 0;
-    table = table.parentNode.parentNode.parentNode.parentNode
+    table = table.parentNode.parentNode.parentNode.parentNode;
     var tableNumberString = table.getAttribute("id");
     var tableNumber = tableNumberString.slice(-1);
     
-    for (var i = 1; i <= numberOfRowsInEachTable[tableNumber]; i++) {
+    for (var i = 1; i <= numberOfRowsInEachTable[tableNumber - 1]; i++) {
+
         console.log("i: " + i);
         var row = table.rows[i];
-        var plannedCellString = row.cells[1].children[0].innerText
+        var plannedCellString = row.cells[1].children[0].innerHTML
         var plannedCellValue = parseFloat(plannedCellString.slice(1));
         total += plannedCellValue;
-
+        
         var subcategory = row.cells[0].children[0].innerText;
         console.log(subcategory);
         // subcategories[i-1] = subcategory;
         // console.log(subcategories);
     }
     
-    var numberOfRowsInIncomeTable = numberOfRowsInEachTable[tableNumber];
-    table.rows[numberOfRowsInIncomeTable+1].cells[1].innerHTML = '$' + total.toFixed(2);
-    categoryTotals[tableNumber] = total;
+    var numberOfRows = numberOfRowsInEachTable[tableNumber - 1];
+    // Update Total Row
+    table.rows[numberOfRows+1].cells[1].innerHTML = '$' + total.toFixed(2);
+    categoryTotals[tableNumber - 1] = total;
 }
 
 function addTableEventListener(table) {
