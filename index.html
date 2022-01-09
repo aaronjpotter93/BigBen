@@ -19,12 +19,12 @@
     <body>
         
         <div class="row">
-            <div class="container" style="border: 1px solid rgb(237, 100, 230);">
+            <div class="container">
                 <div class="row">
-                    <div class="col-2 content" style="border: 3px solid pink;">
+                    <div class="col-3 content">
                         <div class="container">
-                            <div class="row">
-                                <img src="photos/whaleStockPhoto.jpg" class="logo" alt="Big Ben">
+                            <div class="row" style="position: relative;">
+                                <img src="photos/whaleStockPhoto.jpg" class="logo">
                             </div>
                             <div class="row">
                                 <p class="fs-5 fw-lighter" id="logoTitle">Big Ben</p>
@@ -32,18 +32,18 @@
                         </div>
                     </div>
                     <div class="col-9">
-                        <div class="container-lg" id="header" style="border: 1px solid greenyellow;">
+                        <div class="container-lg" id="header">
                             <div class="row" id="topRow">
-                                <div class="col" style="border: 1px solid black;">
+                                <div class="col">
                                     <h1 class="display-1" >December 2021</h1>
                                 </div>
-                                <div class="col" style="border: 1px solid black;">
+                                <div class="col" style="position: relative;">
                                     <button type="button" class="btn btn-secondary btn" id="bankButton" onclick="tokenFromServer()">Connect Your Bank</button>
                                     <button type="button" class="btn btn-secondary btn" id="transactionsButton" onclick="transactionsButton()">Transactions</button>
                                     <!-- <button type="button" class="btn btn-danger btn" id="getTransactionsButton" onclick="getTransactions()">Get Transactions</button> -->
                                 </div>
                             </div>
-                            <div class="row" style="border: 1px solid black;">
+                            <div class="row">
                                 <div class="col" id="budgetTotal">
                 
                                 </div>
@@ -54,13 +54,13 @@
             </div>
         </div>
         
-        <div class="row" style="border: 3px solid green;">
+        <div class="row" >
             <!-- <div class="budgetAndTransactions" style="border: 1px solid red; display: flex;"> -->
             <div class="container budgetAndTransactions">
                 <div class="row">
                     <div class="col">
                         <div id="newCategories" class="overflow-auto">
-                            <table id="myTable1" class="table table-info rounded">
+                            <table id="myTable1" class="table table-info rounded" style="overflow:hidden;">
                                 <tr>
                                     <th scope="col" class="label"><div id="categoryName" class="row_data" edit_type="click" col_name="fname">Income</div></th>
                                     <th scope="col" class="plannedHeader">Planned</th>
@@ -83,7 +83,7 @@
                             <br>
                             <br>
                     
-                            <table id="myTable2" class="table table-info rounded">
+                            <table id="myTable2" class="table table-info rounded" style="overflow:hidden;">
                                 <tr>
                                     <th class="label"><div id="categoryName" class="row_data" edit_type="click" col_name="fname">Transportation</div></th>
                                     <th class="plannedHeader">Planned</th>

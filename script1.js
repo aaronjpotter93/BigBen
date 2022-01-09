@@ -293,6 +293,7 @@ function transactionsButton() {
     // create transactions table
     var table = document.createElement('table');
     table.setAttribute('class', 'table table-info rounded');
+    table.style.overflow = "hidden";
     var header = table.createTHead();
     var row = header.insertRow(0);
     var th1 = document.createElement('TH');
