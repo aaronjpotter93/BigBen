@@ -43,7 +43,7 @@ h2 {
 #logoTitle {
     position: absolute;
     top: 190px;
-    left: 118px;
+    left: 85px;
 }
 
 /* #header {
@@ -69,11 +69,10 @@ h2 {
 #newCategories {
     /* width: 55%; */
     height: 65vh;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     /* border-style: solid;
     border-width: thin;
     border-color: blue; */
-    padding: 5%;
 }
 
 table {
@@ -88,13 +87,12 @@ table {
 }
 
 #transactionsDiv {
-    margin-left: 5%;
+    /* margin-left: 5%; */
     height: 65vh;
     overflow: auto;
     /* border-style: solid;
     border-width: thin;
     border-color: green; */
-    padding: 5%;
 }
 
 #bankButton {
@@ -116,6 +114,17 @@ table {
     right: 120px;
     width: 150px;
 }
+
+/* Screen Break Point */
+/* @media (max-width: 1080px) {
+    #transactionsButton {
+        width: 150px;
+        right: 0px;
+    }
+    #bankButton {
+        width: 100px;
+    }
+} */
   
 
 

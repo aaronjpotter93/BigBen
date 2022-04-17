@@ -87,7 +87,7 @@ app.post('/api/create_link_token', async function(req, res) {
             account_subtypes: ['checking', 'savings'],
         },
     },
-};
+  };
     try {
         const createTokenResponse = await plaidClient.linkTokenCreate(request);
         res.json(createTokenResponse.data);
@@ -205,4 +205,26 @@ async function searchInstitution(insitutionID) {
   }
 }
 
+var mysql = require('mysql');
 
+var connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '3r@Den32',
+  database: 'bigben'
+});
+connection.connect();
+
+var article = {
+  author: 'Braden Potter',
+  title: 'Node tutorial',
+  body: 'foo bar'
+};
+
+var query = connection.query('insert into articles set ?', article, function (err, result){
+  if (err) {
+    console.error(err);
+    return
+  }
+  console.error(result);
+});

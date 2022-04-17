@@ -94,6 +94,7 @@ function addTable() {
     
     var table = document.createElement('table');
     table.className = "table table-info rounded";
+    table.style.overflow = "hidden";
     var row = table.insertRow(0);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
