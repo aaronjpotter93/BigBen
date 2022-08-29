@@ -1,0 +1,51 @@
+.header {
+  position: fixed;
+  height: 150px;
+  /* background-color: rgb(222, 222, 222); */
+  /* opacity: .3; */
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+  background-color: white;
+}
+
+.logo-container {
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 15px;
+  left: 150px;
+  
+  width: 240px;
+}
+
+#logoTitle {
+  position: absolute;
+  top: 153px;
+  left: 223px;
+}
+
+#bankButton {
+  position:absolute;
+  top: 30px;
+  right: 215px;
+}
+
+#transactionsButton {
+  position: absolute;
+  top: 30px;
+  right: 35px;
+  width: 150px;
+}
+
+#getTransactionsButton {
+  position: absolute;
+  top: 70px;
+  right: 120px;
+  width: 150px;
+}
