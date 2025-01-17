@@ -1,11 +1,11 @@
-var iccuAccessToken = "access-development-5c1f0a50-38e4-4815-b6ce-c4953760d635";
-var iccuItemID = "ALnaJQVAZKu0rJnd450asQA1Yp7vQYT6OxqEk";
+var iccuAccessToken = "";
+var iccuItemID = "";
 
-var americaFirstAccessToken = "access-development-7ac3e1c0-579f-4ecc-b478-9c738ba98beb";
-var americaFirstItemID = "oyNPKMk9LjTvzkZNmoNzIyObazjX7gtBMmZpp"
+var americaFirstAccessToken = "";
+var americaFirstItemID = "";
 
-var deseretFirstAccessToken = "access-development-0b2cf49e-9fca-4c33-ae4f-bd52b0b5962e"
-var deseretFirstItemID = "ZqRE0bo3yoUPEdgD0XQBi8JnMqJne4Fb3gwpr"
+var deseretFirstAccessToken = "";
+var deseretFirstItemID = "";
 
 // fs library
 const fs = require('fs');
@@ -32,7 +32,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // const ipfilter = require('express-ipfilter').IpFilter
-// const ips = ['127.0.0.1', '52.21.26.131', '52.21.47.157', '52.41.247.19', '52.88.82.239']
+// const ips = ['***.*.*.*', '**.**.**.***', '**.**.**.***', '**.**.**.**', '**.**.**.***']
 // app.use(ipfilter(ips))
 
 var AccessControl = require('express-ip-access-control');
@@ -60,8 +60,8 @@ const configuration = new Configuration({
     basePath: PlaidEnvironments['development'],
     baseOptions: {
       headers: {
-        'PLAID-CLIENT-ID': '6144b210d9409600107b5f46',
-        'PLAID-SECRET': '95f7393cbfd85793fa1a16c25ae223',
+        'PLAID-CLIENT-ID': '',
+        'PLAID-SECRET': '',
       },
     },
   });
@@ -81,7 +81,7 @@ app.post('/api/create_link_token', async function(req, res) {
     products: ['transactions'],
     country_codes: ['US'],
     language: 'en',
-    webhook: 'http://www.bradenwhalefinance.com.s3-website-us-west-1.amazonaws.com',
+    webhook: 'http://www.*************.com.s3-**********.amazonaws.com',
     account_filters: {
         depository: {
             account_subtypes: ['checking', 'savings'],
@@ -208,10 +208,10 @@ async function searchInstitution(insitutionID) {
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '3r@Den32',
-  database: 'bigben'
+  host: '************',
+  user: '************',
+  password: '**************',
+  database: '**************'
 });
 connection.connect();
 
